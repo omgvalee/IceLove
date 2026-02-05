@@ -61,10 +61,10 @@
 
             background:
                 linear-gradient(
-                rgba(0, 0, 0, 0.55),
-                rgba(0, 0, 0, 0.55)
+                rgba(0, 0, 0, 0.20),
+                rgba(0, 0, 0, 0.20)
                 ),
-            url(images/local2.png);
+            url(images/bobas2.jpeg);
 
             background-size: cover;
             background-position: center;
@@ -158,6 +158,7 @@
             font-weight: 700;
             line-height: 1.1;
             margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
         }
         
         @media (max-width: 768px) {
@@ -204,10 +205,20 @@
         
         /* Navegación */
         .navbar {
-            background: rgba(26, 54, 93, 0.95) !important;
+            background: #03c2d3f2 !important;
             backdrop-filter: blur(10px);
-            padding: 20px 0;
+            padding: 10px 0;
             transition: all 0.3s ease;
+        }
+
+        .navbar .nav-link {
+            font-weight: 600;
+            color: var(--primary-blue) !important;
+            transition: color 0.3s ease;
+        }
+
+        .navbar .nav-link:hover {
+            color: var(--white) !important;
         }
         
         .navbar.scrolled {
@@ -217,13 +228,13 @@
         
         .logo {
             font-weight: 800;
-            font-size: 1.8rem;
+            font-size: 2.7rem;
             color: var(--white);
             letter-spacing: -0.5px;
         }
         
         .logo span {
-            color: var(--accent-blue);
+            color: var(--primary-blue);
         }
         
         /* Botones */
@@ -239,10 +250,10 @@
         
         
         .btn-nebula:hover {
-            background: var(--secondary-blue);
+            background: #e93586;
             transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(66, 153, 225, 0.3);
-            color: white;
+            box-shadow: 0 10px 20px #4299e14d;
+            color: #ffffff;
         }
 
         .btn-nebula-wsp {
@@ -257,7 +268,7 @@
         }
 
         .btn-nebula-wsp:hover {
-            background: var(--secondary-blue);
+            background: #e93586;
             transform: translateY(-2px);
             box-shadow: 0 10px 20px rgba(66, 153, 225, 0.3);
             color: white;
@@ -274,15 +285,15 @@
         }
         
         .btn-outline-nebula:hover {
-            background: var(--white);
-            color: var(--primary-blue);
+            background: #e93586;
+            color: var(--white);
         }
         
         /* Footer */
         footer {
-            background: var(--primary-blue);
-            color: var(--white);
-            padding: 60px 0 30px;
+            background: #03c2d3f2;
+            color: var(--primary-blue);
+            padding: 30px 0 30px;
         }
         
         .social-icon {
@@ -291,15 +302,16 @@
             justify-content: center;
             width: 40px;
             height: 40px;
-            background: rgba(255, 255, 255, 0.1);
+            background: #ffffff;
             border-radius: 50%;
-            color: var(--white);
+            color: var(--accent-blue);
             margin-right: 10px;
             transition: all 0.3s ease;
         }
         
         .social-icon:hover {
-            background: var(--accent-blue);
+            background: #e93586;
+            color: var(--white);
             transform: translateY(-3px);
         }
         
@@ -669,7 +681,7 @@
             <div class="row">
                 <div class="col-lg-4 mb-5 mb-lg-0">
                     <h3 class="logo mb-4">ICE<span>LOVE</span></h3>
-                    <p class="mb-4 text-light">Sabores unicos de bubble tea. Ingredientes excepcionales, técnicas innovadoras.</p>
+                    <p class="mb-4">Sabores unicos de bubble tea. Ingredientes excepcionales, técnicas innovadoras.</p>
                     <div class="d-flex">
                         <a href="#" class="social-icon"><i class="bi bi-instagram"></i></a>
                         <a href="#" class="social-icon"><i class="bi bi-facebook"></i></a>
@@ -681,7 +693,7 @@
             
             <div class="row">
                 <div class="col-md-12 text-center">
-                    <p class="mb-0 text-light opacity-75">&copy; 2025 Ice Love. Todos los derechos reservados.</p>
+                    <p class="mb-0 opacity-75">&copy; 2025 Ice Love. Todos los derechos reservados.</p>
                 </div>
             </div>
         </div>
