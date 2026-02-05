@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
     <style>
         :root {
+            --turquoise: #03c2d3f2;
+            --hotpink: #e93586;
             --primary-blue: #1a365d;
             --secondary-blue: #2d4a8a;
             --accent-blue: #4299e1;
@@ -23,6 +25,12 @@
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             color: var(--dark-text);
             line-height: 1.6;
+        }
+
+        html, body {
+            margin: 0;
+            padding: 0;
+            overscroll-behavior: none;
         }
         
         .full-bg-section {
@@ -134,7 +142,6 @@
             border-radius: 12px;
             text-align: center;
             height: 100%;
-            border-top: 4px solid var(--accent-blue);
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
         }
         
@@ -205,20 +212,24 @@
         
         /* Navegación */
         .navbar {
-            background: #03c2d3f2 !important;
+            background: var(--turquoise) !important;
             backdrop-filter: blur(10px);
             padding: 10px 0;
             transition: all 0.3s ease;
         }
 
         .navbar .nav-link {
-            font-weight: 600;
+            font-weight: 650;
             color: var(--primary-blue) !important;
             transition: color 0.3s ease;
         }
 
         .navbar .nav-link:hover {
             color: var(--white) !important;
+            background-color: var(--primary-blue);
+            border-radius: 2px;
+            transition: all 0.3s ease;
+            padding: 8px 32px;
         }
         
         .navbar.scrolled {
@@ -240,7 +251,7 @@
         /* Botones */
         .btn-nebula {
             background: var(--accent-blue);
-            color: white;
+            color: var(--white);
             padding: 12px 32px;
             border-radius: 8px;
             font-weight: 600;
@@ -250,7 +261,7 @@
         
         
         .btn-nebula:hover {
-            background: #e93586;
+            background: var(--hotpink);
             transform: translateY(-2px);
             box-shadow: 0 10px 20px #4299e14d;
             color: #ffffff;
@@ -268,7 +279,7 @@
         }
 
         .btn-nebula-wsp:hover {
-            background: #e93586;
+            background: var(--hotpink);
             transform: translateY(-2px);
             box-shadow: 0 10px 20px rgba(66, 153, 225, 0.3);
             color: white;
@@ -285,13 +296,13 @@
         }
         
         .btn-outline-nebula:hover {
-            background: #e93586;
+            background: var(--hotpink);
             color: var(--white);
         }
         
         /* Footer */
         footer {
-            background: #03c2d3f2;
+            background: var(--turquoise);
             color: var(--primary-blue);
             padding: 30px 0 30px;
         }
@@ -310,7 +321,7 @@
         }
         
         .social-icon:hover {
-            background: #e93586;
+            background: var(--hotpink);
             color: var(--white);
             transform: translateY(-3px);
         }
@@ -333,6 +344,7 @@
     <!-- Navegación -->
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
         <div class="container">
+           <img src="images/logo.png" alt="Logo" style="height: 85px; margin-right: 10px;"> 
             <a class="navbar-brand logo" href="#inicio">ICE<span>LOVE</span></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
@@ -678,19 +690,20 @@
     <!-- Footer -->
     <footer>
         <div class="container">
-            <div class="row">
-                <div class="col-lg-4 mb-5 mb-lg-0">
-                    <h3 class="logo mb-4">ICE<span>LOVE</span></h3>
-                    <p class="mb-4">Sabores unicos de bubble tea. Ingredientes excepcionales, técnicas innovadoras.</p>
-                    <div class="d-flex">
-                        <a href="#" class="social-icon"><i class="bi bi-instagram"></i></a>
-                        <a href="#" class="social-icon"><i class="bi bi-facebook"></i></a>
+            <div class="row justify-content-center text-center">
+                <div class="col-lg-4">
+                    <div class="d-flex justify-content-center align-items-center mb-4">
+                        <img src="images/logo.png" alt="Logo" style="height: 85px;" class="me-2">
+                        <h3 class="logo mb-0">ICE<span>LOVE</span></h3>
+                    </div>
+            <p class="mb-4">Sabores únicos de bubble tea. Ingredientes excepcionales, técnicas innovadoras.</p>
+                    <div class="d-flex justify-content-center gap-3">
+                        <a href="https://www.instagram.com/icelovelzc/" class="social-icon"><i class="bi bi-instagram"></i></a>
+                        <a href="https://www.facebook.com/icelovelzc/?locale=es_LA" class="social-icon"><i class="bi bi-facebook"></i></a>
                     </div>
                 </div>
             </div>
-            
-            <hr class="my-5 opacity-25">
-            
+            <hr class="my-3 opacity-25">
             <div class="row">
                 <div class="col-md-12 text-center">
                     <p class="mb-0 opacity-75">&copy; 2025 Ice Love. Todos los derechos reservados.</p>
