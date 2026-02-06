@@ -20,23 +20,21 @@
             --white: #ffffff;
             --black: #1a202c;
         }
-        
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            color: var(--dark-text);
-            line-height: 1.6;
-        }
-
-        html {
-            overflow-x: hidden;
-        }
 
         body {
             margin: 0;
             padding: 0;
             overscroll-behavior: none;
+            overflow-x: hidden;
+            max-width: 100vw;
+            position: relative;
         }
-                
+
+        html {
+            overflow-x: hidden;
+            max-width: 100vw;
+        }
+            
         .full-bg-section {
             background-size: cover;
             background-position: center;
