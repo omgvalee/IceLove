@@ -113,10 +113,11 @@
         }
         
         .product-img {
-            height: 200px;
+            height: 170px;
             width: 100%;
             object-fit: cover;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: url(images/chocoboom2.png);
+            background-size: cover;
         }
         
         .product-badge {
@@ -129,6 +130,30 @@
             border-radius: 20px;
             font-size: 0.8rem;
             font-weight: 600;
+        }
+
+        .product-snack-img {
+            height: 100px;
+            width: 100%;
+            object-fit: cover;
+            background: url(images/nieve.png);
+            background-size: cover;
+        }
+
+        .product-pb-img {
+            height: 100px;
+            width: 100%;
+            object-fit: cover;
+            background: url(images/poppingboba.png);
+            background-size: cover;
+        }
+
+        .product-waffle-img {
+            height: 100px;
+            width: 100%;
+            object-fit: cover;
+            background: url(images/waffle2.png);
+            background-size: cover;
         }
         
         /* Sección Misión/Visión/Valores con imágenes de fondo */
@@ -298,8 +323,7 @@
         }
 
         .navbar-logo:hover {
-            transform: rotate(-2deg) scale(1.05);
-            filter: drop-shadow(0 6px 10px rgb(255, 255, 255));
+            transform: rotate(-15deg) scale(1.05);
         }
 
         /* Botones */
@@ -648,46 +672,46 @@
                         <div class="col-md-6">
                             <div class="product-card h-100">
                                 <div class="p-4">
-                                    <i class="bi bi-snow2 display-6 text-primary mb-3"></i>
                                     <h4 class="fw-bold mb-3">Popping Boba</h4>
                                     <ul class="list-unstyled">
                                         <li class="mb-2">• Lorem ipsum dolor</li>
-                                        <li class="mb-2">• Lorem ipsum dolor</li>
-                                        <li class="mb-2">• Lorem ipsum dolor</li>
-                                        <li>• Lorem ipsum dolor</li>
                                     </ul>
+                                </div>
+                                <div class="position-relative">
+                                    <div class="product-pb-img"></div>
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="product-card h-100">
                                 <div class="p-4">
-                                    <i class="bi bi-egg-fried display-6 text-primary mb-3"></i>
                                     <h4 class="fw-bold mb-3">WAFFLES</h4>
-                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus non quidem nesciunt debitis vitae illo sapiente, facilis itaque repudiandae, eveniet est labore eius rem sequi quasi dolor distinctio unde aut?</p>
+                                    <p>Lorem ipsum dolor</p>
+                                </div>
+                                <div class="position-relative">
+                                    <div class="product-waffle-img"></div>
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="product-card h-100">
                                 <div class="p-4">
-                                    <i class="bi bi-snow2 display-6 text-primary mb-3"></i>
-                                    <h4 class="fw-bold mb-3">Jellys</h4>
-                                    <ul class="list-unstyled">
-                                        <li class="mb-2">• Lorem ipsum dolor</li>
-                                        <li class="mb-2">• Lorem ipsum dolor</li>
-                                        <li class="mb-2">• Lorem ipsum dolor</li>
-                                        <li>• Lorem ipsum dolor</li>
-                                    </ul>
+                                    <h4 class="fw-bold mb-3">JELLYS</h4>
+                                    <p>Lorem ipsum dolor</p>
+                                </div>
+                                <div class="position-relative">
+                                    <div class="product-snack-img"></div>
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="product-card h-100">
                                 <div class="p-4">
-                                    <i class="bi bi-egg-fried display-6 text-primary mb-3"></i>
-                                    <h4 class="fw-bold mb-3">Helados</h4>
-                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus non quidem nesciunt debitis vitae illo sapiente, facilis itaque repudiandae, eveniet est labore eius rem sequi quasi dolor distinctio unde aut?</p>
+                                    <h4 class="fw-bold mb-3">HELADOS</h4>
+                                    <p>Lorem ipsum dolor</p>
+                                </div>
+                                <div class="position-relative">
+                                    <div class="product-snack-img"></div>
                                 </div>
                             </div>
                         </div>
@@ -802,7 +826,7 @@
             <div class="row justify-content-center text-center">
                 <div class="col-lg-4">
                     <div class="d-flex justify-content-center align-items-center mb-4">
-                        <img src="images/logo.png" alt="Logo" style="height: 85px;" class="me-2">
+                        <img src="images/logo.png" alt="Logo" class="navbar-logo">
                         <h3 class="logo mb-0 d-none d-lg-block">ICE<span>LOVE</span></h3>
                     </div>
             <p class="mb-4">Sabores únicos de bubble tea. Ingredientes excepcionales, técnicas innovadoras.</p>
