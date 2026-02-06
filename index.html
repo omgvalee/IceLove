@@ -27,10 +27,35 @@
             line-height: 1.6;
         }
 
-        html, body {
+        html {
+            overflow-x: hidden;
+        }
+
+        body {
             margin: 0;
             padding: 0;
-            overscroll-behavior: none;
+        }
+
+        @media (max-width: 768px) {
+            .navbar-nav .nav-item {
+                margin: 0; /* elimina mx-3 en mobile */
+            }
+        }
+                @media (hover: none) {
+            .navbar .nav-link:hover {
+                padding: 8px 16px; /* mismo padding normal */
+                background-color: transparent;
+            }
+        }
+        
+        body {
+            padding-top: 90px;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding-top: 70px;
+            }
         }
         
         .full-bg-section {
