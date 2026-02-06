@@ -27,35 +27,11 @@
             line-height: 1.6;
         }
 
-        html {
-            overflow-x: hidden;
-        }
-
-        body {
+        html, body {
             margin: 0;
             padding: 0;
-        }
-
-        @media (max-width: 768px) {
-            .navbar-nav .nav-item {
-                margin: 0; /* elimina mx-3 en mobile */
-            }
-        }
-                @media (hover: none) {
-            .navbar .nav-link:hover {
-                padding: 8px 16px; /* mismo padding normal */
-                background-color: transparent;
-            }
-        }
-        
-        body {
-            padding-top: 90px;
-        }
-
-        @media (max-width: 768px) {
-            body {
-                padding-top: 70px;
-            }
+            overscroll-behavior: none;
+            overflow-x: hidden;
         }
         
         .full-bg-section {
@@ -460,9 +436,10 @@
     <nav class="navbar navbar-expand-lg navbar-white fixed-top">
         <div class="container">
            <a class="navbar-brand d-flex align-items-center" href="#inicio">
-                <img src="images/logo.png" alt="Logo" class="navbar-logo">
-                <span class="logo d-none d-lg-block ms-2">ICE<span>LOVE</span></span>
-            </a>
+            <img src="images/logo.png" alt="Logo" class="navbar-logo">
+            <span class="logo d-none d-lg-block ms-2">ICE<span>LOVE</span></span>
+        </a>
+
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
