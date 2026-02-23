@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Validar Visita - IceLove</title>
+</head>
+<body>
+
+  <h2>Registrar Visita</h2>
+
+  <div id="contenido">
+    <p>Ingresa PIN de empleado:</p>
+    <input type="password" id="pin">
+    <button onclick="validarVisita()">Registrar</button>
+  </div>
+
+  <p id="mensaje"></p>
+
+  <!-- Librería Supabase -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+  <!-- Conexión -->
+  <script src="js/supabase.js"></script>
+
+  <script>
+
+    const PIN_CORRECTO = "1234"; // luego lo cambiamos
+
+    async function validarVisita() {
+
+      const pinIngresado = document.getElementById("pin").value;
+
+      if (pinIngresado !== PIN_CORRECTO) {
+        alert("PIN incorrecto");
+        return;
+      }
+
+      const params = new URLSearchParams(window.location.search);
+      const id = params.get("id");
+
+      if (!id) {
+        alert("ID inválido");
+        return;
+      }
+
+      // Obtener cliente actual
+      const { data, error } = await supabaseClient
+        .from("clientes")
+        .select("*")
+        .eq("id", id)
+        .single();
+
+      if (error) {
+        console.error(error);
+        alert("Error al buscar cliente");
+        return;
+      }
+
+      let nuevasVisitas = data.visitas + 1;
+      let premio = false;
+
+      if (nuevasVisitas >= 10) {
+        premio = true;
+        nuevasVisitas = 0; // reinicia contador
+      }
+
+      // Actualizar en BD
+      const { error: updateError } = await supabaseClient
+        .from("clientes")
+        .update({
+          visitas: nuevasVisitas,
+          premio_disponible: premio
+        })
+        .eq("id", id);
+
+      if (updateError) {
+        console.error(updateError);
+        alert("Error al actualizar");
+        return;
+      }
+
+      document.getElementById("contenido").style.display = "none";
+
+      document.getElementById("mensaje").innerText =
+        premio
+          ? "🎉 Cliente ganó un producto gratis!"
+          : "✅ Visita registrada correctamente";
+
+    }
+
+  </script>
+
+</body>
+</html>
