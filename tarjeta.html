@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Prueba Supabase - IceLove</title>
+</head>
+<body>
+
+  <h2>Prueba de conexión con Supabase</h2>
+
+  <button onclick="testInsert()">Probar insertar cliente</button>
+
+  <p id="resultado"></p>
+
+  <!-- Librería Supabase v2 -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+  <!-- Tu archivo de conexión -->
+  <script src="js/supabase.js"></script>
+
+  <script>
+    async function testInsert() {
+      const { data, error } = await supabaseClient
+        .from("clientes")
+        .insert([
+          { nombre: "Prueba Web", visitas: 0, premio_disponible: false }
+        ])
+        .select();
+
+      if (error) {
+        console.error(error);
+        document.getElementById("resultado").innerText =
+          "❌ Error: " + error.message;
+      } else {
+        console.log(data);
+        document.getElementById("resultado").innerText =
+          "✅ Cliente insertado correctamente con ID: " + data[0].id;
+      }
+    }
+  </script>
+
+</body>
+</html>
