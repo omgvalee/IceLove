@@ -2,41 +2,90 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Prueba Supabase - IceLove</title>
+  <title>Mi Tarjeta - IceLove</title>
 </head>
 <body>
 
-  <h2>Prueba de conexión con Supabase</h2>
+  <h2>Mi Tarjeta de Lealtad</h2>
 
-  <button onclick="testInsert()">Probar insertar cliente</button>
+  <div id="registro">
+    <input type="text" id="nombre" placeholder="Tu nombre">
+    <button onclick="registrar()">Crear mi tarjeta</button>
+  </div>
 
-  <p id="resultado"></p>
+  <div id="tarjeta" style="display:none;">
+    <p>Visitas: <span id="visitas">0</span>/10</p>
+    <div id="qrcode"></div>
+  </div>
 
-  <!-- Librería Supabase v2 -->
+  <!-- Librerías -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
 
-  <!-- Tu archivo de conexión -->
+  <!-- Conexión -->
   <script src="js/supabase.js"></script>
 
   <script>
-    async function testInsert() {
+
+    let clienteID = localStorage.getItem("clienteID");
+
+    if (clienteID) {
+      cargarCliente(clienteID);
+    }
+
+    async function registrar() {
+      const nombre = document.getElementById("nombre").value;
+
+      if (!nombre) {
+        alert("Ingresa tu nombre");
+        return;
+      }
+
       const { data, error } = await supabaseClient
         .from("clientes")
         .insert([
-          { nombre: "Prueba Web", visitas: 0, premio_disponible: false }
+          { nombre: nombre, visitas: 0, premio_disponible: false }
         ])
         .select();
 
       if (error) {
+        alert("Error al crear tarjeta");
         console.error(error);
-        document.getElementById("resultado").innerText =
-          "❌ Error: " + error.message;
-      } else {
-        console.log(data);
-        document.getElementById("resultado").innerText =
-          "✅ Cliente insertado correctamente con ID: " + data[0].id;
+        return;
       }
+
+      clienteID = data[0].id;
+      localStorage.setItem("clienteID", clienteID);
+
+      cargarCliente(clienteID);
     }
+
+    async function cargarCliente(id) {
+      document.getElementById("registro").style.display = "none";
+      document.getElementById("tarjeta").style.display = "block";
+
+      const { data, error } = await supabaseClient
+        .from("clientes")
+        .select("*")
+        .eq("id", id)
+        .single();
+
+      if (error) {
+        console.error(error);
+        return;
+      }
+
+      document.getElementById("visitas").innerText = data.visitas;
+
+      const qrURL = window.location.origin +
+        "/validar.html?id=" + id;
+
+      QRCode.toCanvas(
+        document.getElementById("qrcode"),
+        qrURL
+      );
+    }
+
   </script>
 
 </body>
