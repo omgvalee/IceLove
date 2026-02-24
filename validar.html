@@ -28,63 +28,70 @@
 
     async function validarVisita() {
 
-      const pinIngresado = document.getElementById("pin").value;
+    const pinIngresado = document.getElementById("pin").value;
 
-      if (pinIngresado !== PIN_CORRECTO) {
+    if (!pinIngresado) {
+        alert("Ingresa PIN");
+        return;
+    }
+
+    // 1️⃣ Validar PIN contra tabla empleados
+    const { data: empleado, error: pinError } = await supabaseClient
+        .from("empleados")
+        .select("*")
+        .eq("pin", pinIngresado)
+        .eq("activo", true)
+        .single();
+
+    if (pinError || !empleado) {
         alert("PIN incorrecto");
         return;
-      }
+    }
 
-      const params = new URLSearchParams(window.location.search);
-      const id = params.get("id");
+    // 2️⃣ Obtener ID cliente desde URL
+    const params = new URLSearchParams(window.location.search);
+    const id = params.get("id");
 
-      if (!id) {
+    if (!id) {
         alert("ID inválido");
         return;
-      }
+    }
 
-      // Obtener cliente actual
-      const { data, error } = await supabaseClient
+    // 3️⃣ Obtener cliente
+    const { data, error } = await supabaseClient
         .from("clientes")
         .select("*")
         .eq("id", id)
         .single();
 
-      if (error) {
-        console.error(error);
-        alert("Error al buscar cliente");
+    if (error) {
+        alert("Error cliente");
         return;
-      }
+    }
 
-      let nuevasVisitas = data.visitas + 1;
-      let premio = false;
+    let nuevasVisitas = data.visitas + 1;
+    let premio = false;
 
-      if (nuevasVisitas >= 10) {
+    if (nuevasVisitas >= 10) {
         premio = true;
-        nuevasVisitas = 0; // reinicia contador
-      }
+        nuevasVisitas = 0;
+    }
 
-      // Actualizar en BD
-      const { error: updateError } = await supabaseClient
+    // 4️⃣ Actualizar visitas
+    await supabaseClient
         .from("clientes")
         .update({
-          visitas: nuevasVisitas,
-          premio_disponible: premio
+        visitas: nuevasVisitas,
+        premio_disponible: premio
         })
         .eq("id", id);
 
-      if (updateError) {
-        console.error(updateError);
-        alert("Error al actualizar");
-        return;
-      }
+    document.getElementById("contenido").style.display = "none";
 
-      document.getElementById("contenido").style.display = "none";
-
-      document.getElementById("mensaje").innerText =
+    document.getElementById("mensaje").innerText =
         premio
-          ? "🎉 Cliente ganó un producto gratis!"
-          : "✅ Visita registrada correctamente";
+        ? "🎉 Premio ganado!"
+        : "✅ Visita registrada";
 
     }
 
