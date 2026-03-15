@@ -11,6 +11,10 @@
       --turquoise: #03c2d3;
       --hotpink:   #e93586;
       --primary-blue: #1a365d;
+      --secondary-blue: #2d4a8a;
+      --accent-blue: #4299e1;
+      --light-gray: #f7fafc;
+      --dark-text: #2d3748;
       --white: #ffffff;
     }
 
@@ -20,242 +24,449 @@
       margin: 0;
       min-height: 100vh;
       font-family: system-ui, sans-serif;
-      background: linear-gradient(135deg, #0d2240 0%, #1a365d 40%, #0a9aaa 100%);
+      background: var(--light-gray);
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
-      padding: 2rem 1rem;
-      position: relative;
-      overflow: hidden;
+      justify-content: flex-start;
+      padding: 0 0 3rem;
     }
 
-    body::before {
-      content: '';
-      position: fixed;
-      width: 400px; height: 400px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(233,53,134,0.15) 0%, transparent 70%);
-      top: -100px; right: -80px;
-      pointer-events: none;
-    }
-
-    /* Card */
-    .val-card {
-      background: rgba(255,255,255,0.08);
-      border: 1px solid rgba(255,255,255,0.15);
-      border-radius: 24px;
-      padding: 2.5rem 2rem;
+    /* ── TOP BAR ── */
+    .page-topbar {
       width: 100%;
-      max-width: 380px;
-      text-align: center;
-      position: relative;
-      z-index: 2;
-      animation: fadeUp 0.5s ease both;
-    }
-
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(16px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-
-    .val-icon {
-      width: 64px; height: 64px;
-      border-radius: 50%;
-      background: rgba(3,194,211,0.15);
-      border: 1px solid rgba(3,194,211,0.3);
+      align-self: stretch;
+      background: rgba(3,194,211,0.9);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      padding: 14px 24px;
       display: flex;
       align-items: center;
-      justify-content: center;
+      justify-content: space-between;
+      margin-bottom: 2.5rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .topbar-brand {
       font-size: 1.6rem;
-      color: var(--turquoise);
-      margin: 0 auto 1.25rem;
-    }
-
-    .val-card h2 {
-      color: var(--white);
-      font-size: 1.3rem;
       font-weight: 800;
-      margin-bottom: 0.4rem;
-    }
-
-    .val-card .client-name {
-      color: var(--turquoise);
-      font-size: 1rem;
-      font-weight: 600;
-      margin-bottom: 0.25rem;
-    }
-
-    .val-card p.sub {
-      color: rgba(255,255,255,0.5);
-      font-size: 0.85rem;
-      margin-bottom: 1.75rem;
-    }
-
-    .form-input {
-      width: 100%;
-      background: rgba(255,255,255,0.1);
-      border: 1px solid rgba(255,255,255,0.2);
-      border-radius: 12px;
-      padding: 14px 18px;
       color: var(--white);
-      font-size: 1.1rem;
-      letter-spacing: 0.3em;
-      text-align: center;
-      outline: none;
-      transition: border-color 0.2s;
-      margin-bottom: 1rem;
+      letter-spacing: -0.5px;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 10px;
     }
-    .form-input::placeholder {
-      color: rgba(255,255,255,0.3);
-      letter-spacing: 0.1em;
-    }
-    .form-input:focus { border-color: var(--turquoise); }
+    .topbar-brand img { height: 42px; }
+    .topbar-brand span { color: var(--primary-blue); }
 
-    .btn-validar {
-      width: 100%;
-      background: linear-gradient(135deg, var(--turquoise), #0a9aaa);
-      color: var(--white);
-      border: none;
-      border-radius: 12px;
-      padding: 14px;
-      font-size: 1rem;
+    .back-link {
+      color: var(--primary-blue);
+      text-decoration: none;
+      font-size: 0.88rem;
       font-weight: 700;
-      cursor: pointer;
-      transition: transform 0.2s, box-shadow 0.2s;
-      box-shadow: 0 8px 24px rgba(3,194,211,0.35);
-    }
-    .btn-validar:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 12px 32px rgba(3,194,211,0.5);
-    }
-
-    /* Result states */
-    .result {
-      display: none;
-      border-radius: 16px;
-      padding: 2rem 1.5rem;
-      text-align: center;
-    }
-    .result.show { display: block; }
-
-    .result.success {
-      background: rgba(3,194,211,0.1);
-      border: 1px solid rgba(3,194,211,0.3);
-    }
-    .result.prize {
-      background: rgba(233,53,134,0.1);
-      border: 1px solid rgba(233,53,134,0.4);
-    }
-    .result.error {
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.15);
-    }
-
-    .result-emoji { font-size: 3rem; margin-bottom: 0.75rem; display: block; }
-    .result h3 { color: var(--white); font-size: 1.2rem; font-weight: 800; margin-bottom: 0.5rem; }
-    .result p  { color: rgba(255,255,255,0.65); font-size: 0.88rem; margin-bottom: 1.25rem; }
-
-    .btn-volver {
-      background: rgba(255,255,255,0.1);
-      border: 1px solid rgba(255,255,255,0.2);
-      color: rgba(255,255,255,0.8);
-      border-radius: 10px;
-      padding: 10px 24px;
-      font-size: 0.85rem;
-      font-weight: 600;
-      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 7px 14px;
+      border-radius: 20px;
+      background: rgba(26,54,93,0.1);
       transition: background 0.2s;
     }
-    .btn-volver:hover { background: rgba(255,255,255,0.18); color: var(--white); }
+    .back-link:hover {
+      background: rgba(26,54,93,0.18);
+      color: var(--primary-blue);
+    }
 
-    /* Visits counter */
-    .visits-display {
+    /* ── CONTENT ── */
+    .page-content {
+      width: 100%;
+      max-width: 400px;
+      padding: 0 1rem;
+    }
+
+    /* ── EMPLOYEE BADGE ── */
+    .employee-badge {
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 8px;
+      background: rgba(26,54,93,0.06);
+      border: 0.5px solid rgba(26,54,93,0.12);
+      border-radius: 20px;
+      padding: 6px 14px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--primary-blue);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin: 0 auto 1.5rem;
+      width: fit-content;
+    }
+
+    /* ── CLIENT INFO BAR ── */
+    .client-info-bar {
+      background: var(--white);
+      border: 0.5px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 1rem 1.25rem;
+      margin-bottom: 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    }
+
+    .client-avatar {
+      width: 42px; height: 42px;
+      border-radius: 50%;
+      background: rgba(3,194,211,0.1);
+      border: 0.5px solid rgba(3,194,211,0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      color: var(--turquoise);
+      flex-shrink: 0;
+    }
+
+    .client-info-text .client-name {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--primary-blue);
+      margin-bottom: 2px;
+    }
+    .client-info-text .client-visits {
+      font-size: 0.78rem;
+      color: #718096;
+    }
+
+    .visits-badge {
+      margin-left: auto;
+      background: rgba(3,194,211,0.08);
+      border: 0.5px solid rgba(3,194,211,0.2);
+      color: #0a7a88;
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 20px;
+      white-space: nowrap;
+    }
+
+    /* ── FORM CARD ── */
+    .form-card {
+      background: var(--white);
+      border: 0.5px solid #e2e8f0;
+      border-radius: 16px;
+      padding: 2rem;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* top accent bar */
+    .form-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--turquoise);
+    }
+
+    .form-card h2 {
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: var(--primary-blue);
+      margin-bottom: 0.35rem;
+    }
+
+    .form-card .sub {
+      color: #718096;
+      font-size: 0.85rem;
+      margin-bottom: 1.5rem;
+      line-height: 1.5;
+    }
+
+    .pin-icon {
+      width: 52px; height: 52px;
+      border-radius: 50%;
+      background: rgba(3,194,211,0.08);
+      border: 0.5px solid rgba(3,194,211,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      color: var(--turquoise);
+      margin: 0 auto 1.25rem;
+    }
+
+    .form-input {
+      width: 100%;
+      background: var(--light-gray);
+      border: 0.5px solid #e2e8f0;
+      border-radius: 10px;
+      padding: 13px 16px;
+      color: var(--dark-text);
+      font-size: 1.4rem;
+      letter-spacing: 0.4em;
+      text-align: center;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      margin-bottom: 1rem;
+    }
+    .form-input::placeholder {
+      color: #cbd5e0;
+      letter-spacing: 0.1em;
+      font-size: 1rem;
+    }
+    .form-input:focus {
+      border-color: var(--turquoise);
+      box-shadow: 0 0 0 3px rgba(3,194,211,0.12);
+      background: var(--white);
+    }
+
+    .btn-validar {
+      width: 100%;
+      background: var(--primary-blue);
+      color: var(--white);
+      border: none;
+      border-radius: 8px;
+      padding: 13px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+      letter-spacing: 0.04em;
+    }
+    .btn-validar:hover {
+      background: var(--turquoise);
+      transform: translateY(-2px);
+    }
+    .btn-validar:active { transform: translateY(0); }
+
+    /* ── RESULT CARDS ── */
+    .result-card {
+      display: none;
+      background: var(--white);
+      border: 0.5px solid #e2e8f0;
+      border-radius: 16px;
+      padding: 2.25rem 2rem;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      animation: fadeUp 0.4s ease both;
+    }
+    .result-card.show { display: block; }
+
+    /* accent bars per result type */
+    .result-card.success::before { content:''; position:absolute; top:0; left:0; right:0; height:3px; background: var(--turquoise); }
+    .result-card.prize::before   { content:''; position:absolute; top:0; left:0; right:0; height:3px; background: var(--hotpink); }
+    .result-card.error::before   { content:''; position:absolute; top:0; left:0; right:0; height:3px; background: #e53e3e; }
+
+    .result-icon {
+      width: 64px; height: 64px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+      margin: 0 auto 1.25rem;
+    }
+    .result-icon.success { background: rgba(3,194,211,0.08);   border: 0.5px solid rgba(3,194,211,0.2); color: var(--turquoise); }
+    .result-icon.prize   { background: rgba(233,53,134,0.08);  border: 0.5px solid rgba(233,53,134,0.2); color: var(--hotpink); }
+    .result-icon.error   { background: rgba(229,62,62,0.08);   border: 0.5px solid rgba(229,62,62,0.2); color: #e53e3e; }
+
+    .result-card h3 {
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: var(--primary-blue);
+      margin-bottom: 0.4rem;
+    }
+
+    .result-card p {
+      color: #718096;
+      font-size: 0.88rem;
+      margin-bottom: 1.5rem;
+      line-height: 1.6;
+    }
+
+    /* Visit counter in success state */
+    .visits-display {
+      display: inline-flex;
+      align-items: baseline;
+      gap: 6px;
+      background: rgba(3,194,211,0.06);
+      border: 0.5px solid rgba(3,194,211,0.18);
+      border-radius: 10px;
+      padding: 10px 20px;
       margin-bottom: 1.25rem;
     }
     .visits-num {
-      font-size: 2.5rem;
+      font-size: 2.2rem;
       font-weight: 800;
-      color: var(--white);
+      color: var(--primary-blue);
       line-height: 1;
     }
     .visits-label {
       font-size: 0.78rem;
-      color: rgba(255,255,255,0.45);
+      color: #718096;
       text-transform: uppercase;
-      letter-spacing: 0.1em;
-      line-height: 1.3;
+      letter-spacing: 0.08em;
+      line-height: 1.4;
+    }
+
+    /* Prize highlight box */
+    .prize-highlight {
+      background: rgba(233,53,134,0.05);
+      border: 0.5px solid rgba(233,53,134,0.2);
+      border-radius: 10px;
+      padding: 12px 16px;
+      margin-bottom: 1.5rem;
+      font-size: 0.88rem;
+      color: #c0226e;
+      font-weight: 600;
+    }
+
+    .btn-volver {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--white);
+      border: 0.5px solid #e2e8f0;
+      color: #718096;
+      border-radius: 8px;
+      padding: 10px 22px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-decoration: none;
+    }
+    .btn-volver:hover {
+      border-color: #cbd5e0;
+      color: var(--dark-text);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(14px); }
+      to   { opacity: 1; transform: translateY(0); }
     }
 
     @media (max-width: 420px) {
-      .val-card { padding: 2rem 1.5rem; }
+      .form-card, .result-card { padding: 1.75rem 1.5rem; }
     }
   </style>
 </head>
 <body>
 
-  <!-- VALIDATION FORM -->
-  <div class="val-card" id="formSection">
-    <div class="val-icon"><i class="bi bi-qr-code-scan"></i></div>
-    <h2>Registrar visita</h2>
-    <p class="sub" id="clientLabel">Cargando cliente...</p>
-
-    <input class="form-input" type="password" id="pin"
-      placeholder="PIN" maxlength="6" inputmode="numeric">
-    <button class="btn-validar" onclick="validarVisita()">
-      Confirmar visita
-    </button>
+  <!-- TOP BAR -->
+  <div class="page-topbar" style="width:100%; margin-bottom:0;">
+    <a href="index.html" class="topbar-brand">
+      <img src="images/logo.png" alt="Ice Love" onerror="this.style.display='none'">
+      ICE<span>LOVE</span>
+    </a>
+    <a href="index.html" class="back-link">
+      <i class="bi bi-arrow-left"></i> Volver
+    </a>
   </div>
 
-  <!-- SUCCESS RESULT -->
-  <div class="val-card result success" id="resultSuccess">
-    <span class="result-emoji">✅</span>
-    <h3>¡Visita registrada!</h3>
-    <div class="visits-display">
-      <span class="visits-num" id="newVisitas">0</span>
-      <span class="visits-label">visitas<br>acumuladas</span>
+  <div class="page-content" style="margin-top: 2rem;">
+
+    <!-- Employee badge -->
+    <div class="employee-badge">
+      <i class="bi bi-person-badge"></i> Panel de empleado
     </div>
-    <p id="visitasRestantes"></p>
-    <button class="btn-volver" onclick="location.href='index.html'">Volver al inicio</button>
+
+    <!-- Client info bar (populated by JS) -->
+    <div class="client-info-bar" id="clientBar" style="display:none;">
+      <div class="client-avatar"><i class="bi bi-person"></i></div>
+      <div class="client-info-text">
+        <div class="client-name" id="clientBarName">—</div>
+        <div class="client-visits" id="clientBarSub">Cargando...</div>
+      </div>
+      <span class="visits-badge" id="clientBarBadge">—</span>
+    </div>
+
+    <!-- FORM SECTION -->
+    <div class="form-card" id="formSection">
+      <div class="pin-icon"><i class="bi bi-shield-lock"></i></div>
+      <h2>Registrar visita</h2>
+      <p class="sub" id="clientLabel">Cargando cliente...</p>
+      <input class="form-input" type="password" id="pin"
+        placeholder="PIN" maxlength="6" inputmode="numeric">
+      <button class="btn-validar" onclick="validarVisita()">
+        <i class="bi bi-check-circle me-2"></i> Confirmar visita
+      </button>
+    </div>
+
+    <!-- SUCCESS RESULT -->
+    <div class="result-card success" id="resultSuccess">
+      <div class="result-icon success"><i class="bi bi-check-lg"></i></div>
+      <h3>¡Visita registrada!</h3>
+      <div class="visits-display">
+        <span class="visits-num" id="newVisitas">0</span>
+        <span class="visits-label">visitas<br>acumuladas</span>
+      </div>
+      <p id="visitasRestantes"></p>
+      <a href="index.html" class="btn-volver"><i class="bi bi-house"></i> Volver al inicio</a>
+    </div>
+
+    <!-- PRIZE RESULT -->
+    <div class="result-card prize" id="resultPrize">
+      <div class="result-icon prize"><i class="bi bi-gift"></i></div>
+      <h3>¡Premio ganado!</h3>
+      <div class="prize-highlight">
+        El cliente ha completado 10 visitas.<br>
+        Entrégale su bebida gratis. 🎉
+      </div>
+      <p>El contador se ha reiniciado automáticamente.</p>
+      <a href="index.html" class="btn-volver"><i class="bi bi-house"></i> Volver al inicio</a>
+    </div>
+
+    <!-- ERROR RESULT -->
+    <div class="result-card error" id="resultError">
+      <div class="result-icon error"><i class="bi bi-x-lg"></i></div>
+      <h3 id="errorTitle">PIN incorrecto</h3>
+      <p id="errorMsg">Verifica el PIN e intenta nuevamente.</p>
+      <button class="btn-volver" onclick="resetForm()">
+        <i class="bi bi-arrow-counterclockwise"></i> Intentar de nuevo
+      </button>
+    </div>
+
   </div>
 
-  <!-- PRIZE RESULT -->
-  <div class="val-card result prize" id="resultPrize">
-    <span class="result-emoji">🎉</span>
-    <h3>¡Premio ganado!</h3>
-    <p>El cliente ha completado 10 visitas.<br>Entrégale su bebida gratis.</p>
-    <button class="btn-volver" onclick="location.href='index.html'">Volver al inicio</button>
-  </div>
-
-  <!-- ERROR RESULT -->
-  <div class="val-card result error" id="resultError">
-    <span class="result-emoji">❌</span>
-    <h3 id="errorTitle">PIN incorrecto</h3>
-    <p id="errorMsg">Verifica el PIN e intenta nuevamente.</p>
-    <button class="btn-volver" onclick="resetForm()">Intentar de nuevo</button>
-  </div>
-
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="js/supabase.js"></script>
   <script>
     const params = new URLSearchParams(window.location.search);
     const clienteID = params.get("id");
 
-    // Pre-load client name
+    // Pre-load client info
     (async () => {
       if (!clienteID) {
-        document.getElementById("clientLabel").textContent = "QR inválido";
+        document.getElementById("clientLabel").textContent = "QR inválido — no se encontró el cliente.";
         return;
       }
       const { data } = await supabaseClient
         .from("clientes").select("nombre, visitas").eq("id", clienteID).single();
       if (data) {
+        // Update form subtitle
         document.getElementById("clientLabel").textContent =
-          `Cliente: ${data.nombre} · ${data.visitas}/10 visitas`;
+          "Ingresa el PIN para confirmar la visita de " + data.nombre;
+
+        // Show client info bar
+        const bar = document.getElementById("clientBar");
+        bar.style.display = "flex";
+        document.getElementById("clientBarName").textContent = data.nombre;
+        document.getElementById("clientBarSub").textContent = "Visitas acumuladas";
+        document.getElementById("clientBarBadge").textContent = data.visitas + " / 10";
       }
     })();
 
@@ -263,7 +474,6 @@
       const pin = document.getElementById("pin").value;
       if (!pin) return;
 
-      // Check PIN
       const { data: empleado, error: pinError } = await supabaseClient
         .from("empleados").select("*").eq("pin", pin).eq("activo", true).single();
 
@@ -277,7 +487,6 @@
         return;
       }
 
-      // Get client
       const { data, error } = await supabaseClient
         .from("clientes").select("*").eq("id", clienteID).single();
       if (error) { showError("Error", "No se encontró el cliente."); return; }
@@ -292,6 +501,7 @@
         .eq("id", clienteID);
 
       document.getElementById("formSection").style.display = "none";
+      document.getElementById("clientBar").style.display = "none";
 
       if (premio) {
         document.getElementById("resultPrize").classList.add("show");
@@ -299,13 +509,14 @@
         document.getElementById("newVisitas").textContent = nuevasVisitas;
         const restantes = 10 - nuevasVisitas;
         document.getElementById("visitasRestantes").textContent =
-          `Faltan ${restantes} visita${restantes !== 1 ? "s" : ""} para el premio.`;
+          "Faltan " + restantes + " visita" + (restantes !== 1 ? "s" : "") + " para el premio.";
         document.getElementById("resultSuccess").classList.add("show");
       }
     }
 
     function showError(title, msg) {
       document.getElementById("formSection").style.display = "none";
+      document.getElementById("clientBar").style.display = "none";
       document.getElementById("errorTitle").textContent = title;
       document.getElementById("errorMsg").textContent = msg;
       document.getElementById("resultError").classList.add("show");
@@ -314,6 +525,7 @@
     function resetForm() {
       document.getElementById("resultError").classList.remove("show");
       document.getElementById("formSection").style.display = "block";
+      document.getElementById("clientBar").style.display = "flex";
       document.getElementById("pin").value = "";
     }
   </script>
