@@ -2,61 +2,482 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Mi Tarjeta - IceLove</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mi Tarjeta — Ice Love</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+  <style>
+    :root {
+      --turquoise: #03c2d3;
+      --hotpink:   #e93586;
+      --primary-blue: #1a365d;
+      --secondary-blue: #2d4a8a;
+      --accent-blue: #4299e1;
+      --white: #ffffff;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: system-ui, sans-serif;
+      background: linear-gradient(135deg, #0d2240 0%, #1a365d 35%, #1a5a6b 65%, #03c2d3 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 1rem;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* Background blobs */
+    body::before {
+      content: '';
+      position: fixed;
+      width: 500px; height: 500px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(233,53,134,0.15) 0%, transparent 70%);
+      top: -150px; right: -100px;
+      pointer-events: none;
+    }
+    body::after {
+      content: '';
+      position: fixed;
+      width: 350px; height: 350px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(3,194,211,0.12) 0%, transparent 70%);
+      bottom: -80px; left: -60px;
+      pointer-events: none;
+    }
+
+    /* Back link */
+    .back-link {
+      position: fixed;
+      top: 20px; left: 20px;
+      color: rgba(255,255,255,0.75);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: color 0.2s;
+      z-index: 10;
+    }
+    .back-link:hover { color: var(--white); }
+
+    /* Logo header */
+    .page-logo {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    .page-logo img { height: 56px; }
+    .page-logo .brand {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--white);
+      letter-spacing: -0.5px;
+      display: block;
+      margin-top: 6px;
+    }
+    .page-logo .brand span { color: var(--turquoise); }
+
+    /* ======= REGISTRO FORM ======= */
+    .registro-card {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 24px;
+      padding: 2.5rem 2rem;
+      width: 100%;
+      max-width: 400px;
+      text-align: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    .registro-card h2 {
+      color: var(--white);
+      font-size: 1.4rem;
+      font-weight: 800;
+      margin-bottom: 0.5rem;
+    }
+    .registro-card p {
+      color: rgba(255,255,255,0.6);
+      font-size: 0.9rem;
+      margin-bottom: 1.75rem;
+    }
+
+    .form-input {
+      width: 100%;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 12px;
+      padding: 14px 18px;
+      color: var(--white);
+      font-size: 1rem;
+      outline: none;
+      transition: border-color 0.2s, background 0.2s;
+      margin-bottom: 1rem;
+    }
+    .form-input::placeholder { color: rgba(255,255,255,0.4); }
+    .form-input:focus {
+      border-color: var(--turquoise);
+      background: rgba(255,255,255,0.14);
+    }
+
+    .btn-crear {
+      width: 100%;
+      background: linear-gradient(135deg, var(--hotpink), #c0226e);
+      color: var(--white);
+      border: none;
+      border-radius: 12px;
+      padding: 14px;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 8px 24px rgba(233,53,134,0.4);
+    }
+    .btn-crear:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 32px rgba(233,53,134,0.55);
+    }
+    .btn-crear:active { transform: translateY(0); }
+
+    /* ======= LOYALTY CARD ======= */
+    #tarjeta { display: none; width: 100%; max-width: 400px; position: relative; z-index: 2; }
+
+    .loyalty-card {
+      background: linear-gradient(135deg, #1a365d 0%, #2d4a8a 50%, #1a5a6b 100%);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 24px;
+      padding: 2rem;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 24px 60px rgba(0,0,0,0.4);
+      margin-bottom: 1.25rem;
+    }
+
+    /* Card shine overlay */
+    .loyalty-card::before {
+      content: '';
+      position: absolute;
+      top: -50%; left: -50%;
+      width: 200%; height: 200%;
+      background: radial-gradient(ellipse at 30% 30%, rgba(255,255,255,0.07) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    /* Decorative circle top-right */
+    .loyalty-card::after {
+      content: '';
+      position: absolute;
+      width: 180px; height: 180px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.08);
+      top: -60px; right: -60px;
+    }
+
+    .card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 1.5rem;
+    }
+
+    .card-brand {
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: var(--white);
+      letter-spacing: -0.3px;
+    }
+    .card-brand span { color: var(--turquoise); }
+
+    .card-badge {
+      background: rgba(233,53,134,0.2);
+      border: 1px solid rgba(233,53,134,0.4);
+      color: var(--hotpink);
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 20px;
+    }
+
+    .card-name {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 0.25rem;
+    }
+    .card-label {
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.45);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 1.75rem;
+    }
+
+    /* Stamp grid */
+    .stamps-label {
+      font-size: 0.72rem;
+      color: rgba(255,255,255,0.45);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: 0.75rem;
+    }
+
+    .stamps-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 10px;
+      margin-bottom: 1.5rem;
+    }
+
+    .stamp {
+      aspect-ratio: 1;
+      border-radius: 50%;
+      border: 1.5px solid rgba(255,255,255,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+      background: rgba(255,255,255,0.04);
+    }
+
+    .stamp.filled {
+      background: linear-gradient(135deg, var(--hotpink), #c0226e);
+      border-color: transparent;
+      box-shadow: 0 4px 12px rgba(233,53,134,0.45);
+    }
+
+    .stamp.filled::after {
+      content: '✦';
+      color: white;
+      font-size: 0.85rem;
+    }
+
+    /* Progress bar */
+    .progress-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .progress-bar-wrap {
+      flex: 1;
+      height: 6px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 3px;
+      overflow: hidden;
+    }
+
+    .progress-bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--turquoise), var(--hotpink));
+      border-radius: 3px;
+      transition: width 0.6s ease;
+    }
+
+    .progress-text {
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.55);
+      white-space: nowrap;
+    }
+    .progress-text strong { color: var(--white); }
+
+    /* Prize banner */
+    .prize-banner {
+      display: none;
+      background: linear-gradient(135deg, rgba(233,53,134,0.2), rgba(233,53,134,0.08));
+      border: 1px solid rgba(233,53,134,0.4);
+      border-radius: 14px;
+      padding: 1rem 1.25rem;
+      text-align: center;
+      margin-bottom: 1.25rem;
+    }
+    .prize-banner.show { display: block; }
+    .prize-banner p {
+      color: var(--hotpink);
+      font-weight: 700;
+      font-size: 0.95rem;
+      margin: 0;
+    }
+    .prize-banner small {
+      color: rgba(255,255,255,0.5);
+      font-size: 0.78rem;
+    }
+
+    /* QR section */
+    .qr-section {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 18px;
+      padding: 1.5rem;
+      text-align: center;
+      margin-bottom: 1.25rem;
+    }
+
+    .qr-section p {
+      color: rgba(255,255,255,0.55);
+      font-size: 0.8rem;
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    #qrcode {
+      border-radius: 12px;
+      background: white;
+      padding: 10px;
+      display: block;
+      margin: 0 auto;
+    }
+
+    /* Bottom actions */
+    .card-actions {
+      display: flex;
+      gap: 10px;
+    }
+
+    .btn-action {
+      flex: 1;
+      padding: 12px;
+      border-radius: 12px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      text-decoration: none;
+    }
+
+    .btn-action.secondary {
+      background: rgba(255,255,255,0.1);
+      color: rgba(255,255,255,0.8);
+      border: 1px solid rgba(255,255,255,0.15);
+    }
+    .btn-action.secondary:hover {
+      background: rgba(255,255,255,0.15);
+      color: var(--white);
+    }
+
+    /* Animations */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .registro-card, #tarjeta { animation: fadeUp 0.5s ease both; }
+
+    @media (max-width: 420px) {
+      .loyalty-card { padding: 1.5rem; }
+      .stamps-grid  { gap: 7px; }
+    }
+  </style>
 </head>
 <body>
 
-  <h2>Mi Tarjeta de Lealtad</h2>
+  <a href="index.html" class="back-link">
+    <i class="bi bi-arrow-left"></i> Volver
+  </a>
 
-  <div id="registro">
-    <input type="text" id="nombre" placeholder="Tu nombre">
-    <button onclick="registrar()">Crear mi tarjeta</button>
+  <!-- Logo -->
+  <div class="page-logo">
+    <img src="images/logo.png" alt="Ice Love" onerror="this.style.display='none'">
+    <span class="brand">ICE<span>LOVE</span></span>
   </div>
 
-  <div id="tarjeta" style="display:none;">
-    <p>Visitas: <span id="visitas">0</span>/10</p>
-    <canvas id="qrcode"></canvas>
+  <!-- REGISTRO -->
+  <div class="registro-card" id="registro">
+    <div style="font-size:2.5rem; margin-bottom:1rem;">🧋</div>
+    <h2>Tu tarjeta de lealtad</h2>
+    <p>Acumula visitas y gana una bebida gratis cada 10 visitas. Sin registro complicado.</p>
+    <input class="form-input" type="text" id="nombre" placeholder="¿Cómo te llamas?">
+    <button class="btn-crear" onclick="registrar()">
+      Crear mi tarjeta
+    </button>
   </div>
 
-  <!-- Librerías -->
+  <!-- TARJETA -->
+  <div id="tarjeta">
+
+    <!-- Prize banner (hidden by default) -->
+    <div class="prize-banner" id="prizeBanner">
+      <p>🎉 ¡Premio disponible!</p>
+      <small>Muestra esta pantalla al empleado para canjearlo</small>
+    </div>
+
+    <!-- The card itself -->
+    <div class="loyalty-card">
+      <div class="card-top">
+        <div class="card-brand">ICE<span>LOVE</span></div>
+        <div class="card-badge">Lealtad</div>
+      </div>
+
+      <div class="card-name" id="cardNombre">—</div>
+      <div class="card-label">Miembro</div>
+
+      <div class="stamps-label">Tus visitas</div>
+      <div class="stamps-grid" id="stampsGrid">
+        <!-- filled by JS -->
+      </div>
+
+      <div class="progress-row">
+        <div class="progress-bar-wrap">
+          <div class="progress-bar-fill" id="progressBar" style="width:0%"></div>
+        </div>
+        <div class="progress-text"><strong id="visitas">0</strong>/10</div>
+      </div>
+    </div>
+
+    <!-- QR -->
+    <div class="qr-section">
+      <p>Muestra este QR en tienda</p>
+      <canvas id="qrcode"></canvas>
+    </div>
+
+    <!-- Actions -->
+    <div class="card-actions">
+      <button class="btn-action secondary" onclick="borrarTarjeta()">
+        <i class="bi bi-trash3"></i> Borrar tarjeta
+      </button>
+      <a href="index.html" class="btn-action secondary">
+        <i class="bi bi-house"></i> Inicio
+      </a>
+    </div>
+
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
-
-  <!-- Conexión -->
   <script src="js/supabase.js"></script>
-
   <script>
-
     let clienteID = localStorage.getItem("clienteID");
-
-    if (clienteID) {
-      cargarCliente(clienteID);
-    }
+    if (clienteID) cargarCliente(clienteID);
 
     async function registrar() {
-      const nombre = document.getElementById("nombre").value;
-
+      const nombre = document.getElementById("nombre").value.trim();
       if (!nombre) {
-        alert("Ingresa tu nombre");
+        document.getElementById("nombre").style.borderColor = "var(--hotpink)";
         return;
       }
-
       const { data, error } = await supabaseClient
         .from("clientes")
-        .insert([
-          { nombre: nombre, visitas: 0, premio_disponible: false }
-        ])
+        .insert([{ nombre, visitas: 0, premio_disponible: false }])
         .select();
-
-      if (error) {
-        alert("Error al crear tarjeta");
-        console.error(error);
-        return;
-      }
-
+      if (error) { alert("Error al crear tarjeta"); console.error(error); return; }
       clienteID = data[0].id;
       localStorage.setItem("clienteID", clienteID);
-
       cargarCliente(clienteID);
     }
 
@@ -65,28 +486,41 @@
       document.getElementById("tarjeta").style.display = "block";
 
       const { data, error } = await supabaseClient
-        .from("clientes")
-        .select("*")
-        .eq("id", id)
-        .single();
+        .from("clientes").select("*").eq("id", id).single();
+      if (error) { console.error(error); return; }
 
-      if (error) {
-        console.error(error);
-        return;
+      // Name & visits
+      document.getElementById("cardNombre").textContent = data.nombre;
+      document.getElementById("visitas").textContent = data.visitas;
+
+      // Stamps grid
+      const grid = document.getElementById("stampsGrid");
+      grid.innerHTML = "";
+      for (let i = 0; i < 10; i++) {
+        const s = document.createElement("div");
+        s.className = "stamp" + (i < data.visitas ? " filled" : "");
+        grid.appendChild(s);
       }
 
-      document.getElementById("visitas").innerText = data.visitas;
+      // Progress bar
+      document.getElementById("progressBar").style.width = (data.visitas * 10) + "%";
 
-      const qrURL = window.location.origin +
-        "/IceLove/validar.html?id=" + id;
+      // Prize banner
+      if (data.premio_disponible) {
+        document.getElementById("prizeBanner").classList.add("show");
+      }
 
-      QRCode.toCanvas(
-        document.getElementById("qrcode"),
-        qrURL
-      );
+      // QR
+      const qrURL = window.location.origin + "/IceLove/validar.html?id=" + id;
+      QRCode.toCanvas(document.getElementById("qrcode"), qrURL, { width: 180 });
     }
 
+    function borrarTarjeta() {
+      if (confirm("¿Seguro que quieres borrar tu tarjeta? Perderás tus visitas acumuladas.")) {
+        localStorage.removeItem("clienteID");
+        location.reload();
+      }
+    }
   </script>
-
 </body>
 </html>

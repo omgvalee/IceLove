@@ -85,7 +85,6 @@
 
         /* =====================
            FLAVORS HORIZONTAL SCROLL
-           (shared by Sabores & Helados)
         ===================== */
         .flavors-scroll-wrapper { position: relative; }
 
@@ -132,18 +131,6 @@
         .scroll-arrow.right { right: -20px; }
 
         @media (hover: hover) { .scroll-arrow { display: flex; } }
-
-        /* =====================
-           ICE CREAM SECTION DIVIDER
-        ===================== */
-        .section-divider {
-            width: 100%;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, #e2e8f0 20%, #e2e8f0 80%, transparent);
-        }
-
-        /* Ice cream badge color override — warm pastel palette */
-        .badge-ice { background: var(--hotpink); }
 
         /* =====================
            SNACKS
@@ -267,7 +254,7 @@
         }
 
         .mv-card p {
-            color: rgba(255,255,255,0.933);
+            color: rgba(255, 255, 255, 0.933);
             font-size: 0.95rem;
             line-height: 1.75;
             margin-bottom: 0;
@@ -284,7 +271,7 @@
             font-weight: 700;
             letter-spacing: 0.18em;
             text-transform: uppercase;
-            color: rgb(255,255,255);
+            color: rgb(255, 255, 255);
             margin-bottom: 2rem;
         }
 
@@ -330,7 +317,7 @@
 
         .valor-content p {
             font-size: 0.85rem;
-            color: rgba(255,255,255,0.912);
+            color: rgba(255, 255, 255, 0.912);
             line-height: 1.6;
             margin: 0;
         }
@@ -397,9 +384,6 @@
 
         .section-title.center { text-align: center; }
         .section-title.center::after { left: 50%; transform: translateX(-50%); }
-
-        /* Pink underline variant for ice cream section */
-        .section-title.pink-line::after { background: var(--hotpink); }
 
         /* =====================
            NAVBAR
@@ -548,232 +532,6 @@
             transform: translateY(-3px);
         }
 
-        /* Loyalty card nav button */
-        .nav-link-card {
-            background: linear-gradient(135deg, var(--hotpink), #c0226e) !important;
-            color: var(--white) !important;
-            border-radius: 20px !important;
-            padding: 7px 18px !important;
-            font-weight: 700 !important;
-            transition: transform 0.2s, box-shadow 0.2s !important;
-            box-shadow: 0 4px 14px rgba(233,53,134,0.35);
-        }
-        .nav-link-card::after { display: none !important; }
-        .nav-link-card:hover {
-            transform: translateY(-2px) !important;
-            box-shadow: 0 8px 20px rgba(233,53,134,0.5) !important;
-            color: var(--white) !important;
-            background: linear-gradient(135deg, var(--hotpink), #c0226e) !important;
-            padding: 7px 18px !important;
-            border-radius: 20px !important;
-        }
-
-        /* =====================
-           LOYALTY BANNER — bold split ad
-        ===================== */
-        .loyalty-banner {
-            background: #fff0f5;
-            padding: 0;
-            position: relative;
-            overflow: hidden;
-            border-top: 4px solid var(--hotpink);
-            border-bottom: 4px solid var(--hotpink);
-        }
-
-        .loyalty-banner::before {
-            content: '';
-            position: absolute;
-            top: 0; right: 0;
-            width: 52%;
-            height: 100%;
-            background: linear-gradient(150deg, var(--hotpink) 0%, #c0226e 100%);
-            clip-path: polygon(10% 0%, 100% 0%, 100% 100%, 0% 100%);
-            pointer-events: none;
-        }
-
-        .loyalty-banner::after {
-            content: '';
-            position: absolute;
-            top: 0; right: 0;
-            width: 52%;
-            height: 100%;
-            background-image: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
-            background-size: 20px 20px;
-            clip-path: polygon(10% 0%, 100% 0%, 100% 100%, 0% 100%);
-            pointer-events: none;
-            z-index: 1;
-        }
-
-        .loyalty-banner-inner {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            min-height: 340px;
-            position: relative;
-            z-index: 2;
-        }
-
-        @media (max-width: 767px) {
-            .loyalty-banner::before,
-            .loyalty-banner::after { display: none; }
-            .loyalty-banner { background: linear-gradient(135deg, var(--hotpink), #c0226e); border-color: #c0226e; }
-            .loyalty-banner-inner { grid-template-columns: 1fr; }
-            .loyalty-banner-left { padding: 3rem 1.5rem; }
-            .loyalty-banner-left h2 { color: #fff; }
-            .loyalty-banner-left p { color: rgba(255,255,255,0.8); }
-            .loyalty-stamp-dot { border-color: rgba(255,255,255,0.4); background: rgba(255,255,255,0.15); }
-            .loyalty-stamp-dot.on { background: #fff; border-color: #fff; }
-            .btn-tarjeta { background: #fff; color: var(--hotpink); box-shadow: 0 8px 24px rgba(0,0,0,0.15); }
-            .btn-tarjeta:hover { background: #fff; color: #c0226e; }
-            .loyalty-banner-right { display: none; }
-        }
-
-        .loyalty-banner-left {
-            padding: 3.5rem 2.5rem 3.5rem 0;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        .ad-tag {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            background: var(--hotpink);
-            color: #fff;
-            font-size: 0.68rem;
-            font-weight: 800;
-            letter-spacing: 0.16em;
-            text-transform: uppercase;
-            padding: 5px 14px;
-            border-radius: 20px;
-            margin-bottom: 1.25rem;
-            align-self: flex-start;
-        }
-
-        .loyalty-banner-left h2 {
-            font-size: clamp(1.9rem, 3.2vw, 2.75rem);
-            font-weight: 900;
-            color: var(--primary-blue);
-            line-height: 1.05;
-            margin-bottom: 1rem;
-            letter-spacing: -0.02em;
-        }
-
-        .loyalty-banner-left h2 em {
-            font-style: normal;
-            color: var(--hotpink);
-        }
-
-        .loyalty-banner-left p {
-            color: #6b7280;
-            font-size: 0.95rem;
-            line-height: 1.7;
-            margin-bottom: 1.5rem;
-            max-width: 360px;
-        }
-
-        .loyalty-stamp {
-            display: flex;
-            gap: 7px;
-            margin-bottom: 1.75rem;
-            flex-wrap: wrap;
-        }
-
-        .loyalty-stamp-dot {
-            width: 26px; height: 26px;
-            border-radius: 50%;
-            border: 2px solid #fbbad5;
-            background: #fff;
-            flex-shrink: 0;
-        }
-
-        .loyalty-stamp-dot.on {
-            background: var(--hotpink);
-            border-color: var(--hotpink);
-            box-shadow: 0 3px 8px rgba(233,53,134,0.4);
-        }
-
-        .btn-tarjeta {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            background: var(--primary-blue);
-            color: var(--white);
-            text-decoration: none;
-            padding: 14px 34px;
-            border-radius: 6px;
-            font-weight: 800;
-            font-size: 0.9rem;
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
-            transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
-            box-shadow: 0 8px 24px rgba(26,54,93,0.3);
-            align-self: flex-start;
-        }
-        .btn-tarjeta:hover {
-            background: #0f2340;
-            transform: translateY(-2px);
-            box-shadow: 0 14px 30px rgba(26,54,93,0.45);
-            color: var(--white);
-        }
-
-        .loyalty-banner-right {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 3rem 2rem;
-            position: relative;
-            z-index: 2;
-        }
-
-        .loyalty-card-mockup {
-            background: rgba(255,255,255,0.14);
-            border: 1px solid rgba(255,255,255,0.3);
-            border-radius: 20px;
-            padding: 1.6rem;
-            width: 100%;
-            max-width: 280px;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.2);
-        }
-
-        .mockup-top {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1.1rem;
-        }
-
-        .mockup-brand { font-size: 1rem; font-weight: 900; color: #fff; }
-        .mockup-brand span { color: rgba(255,255,255,0.55); }
-
-        .mockup-free {
-            background: rgba(255,255,255,0.2);
-            color: #fff;
-            font-size: 0.62rem;
-            font-weight: 800;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            padding: 3px 9px;
-            border-radius: 20px;
-            border: 1px solid rgba(255,255,255,0.3);
-        }
-
-        .mockup-name { font-size: 0.88rem; font-weight: 700; color: #fff; margin-bottom: 0.1rem; }
-        .mockup-sub { font-size: 0.65rem; color: rgba(255,255,255,0.45); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1.1rem; }
-
-        .mockup-stamps {
-            display: grid;
-            grid-template-columns: repeat(5, 1fr);
-            gap: 7px;
-            margin-bottom: 1rem;
-        }
-
-        .mockup-dot { aspect-ratio:1; border-radius:50%; background:rgba(255,255,255,0.15); border:1.5px solid rgba(255,255,255,0.2); }
-        .mockup-dot.on { background:#fff; border-color:transparent; box-shadow:0 2px 6px rgba(0,0,0,0.2); }
-
-        .mockup-progress { height:4px; background:rgba(255,255,255,0.2); border-radius:2px; overflow:hidden; }
-        .mockup-progress-fill { height:100%; width:70%; background:rgba(255,255,255,0.8); border-radius:2px; }
-
         /* =====================
            UTILITIES
         ===================== */
@@ -796,15 +554,9 @@
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item mx-lg-3"><a class="nav-link" href="#inicio">INICIO</a></li>
                     <li class="nav-item mx-lg-3"><a class="nav-link" href="#sabores">SABORES</a></li>
-                    <li class="nav-item mx-lg-3"><a class="nav-link" href="#helados">HELADOS</a></li>
                     <li class="nav-item mx-lg-3"><a class="nav-link" href="#snacks">SNACKS</a></li>
                     <li class="nav-item mx-lg-3"><a class="nav-link" href="#nosotros">NOSOTROS</a></li>
                     <li class="nav-item mx-lg-3"><a class="nav-link" href="#ubicacion">UBICACIÓN</a></li>
-                    <li class="nav-item mx-lg-3 ms-lg-2">
-                        <a class="nav-link nav-link-card" href="tarjeta.html">
-                            <i class="bi bi-card-checklist me-1"></i>MI TARJETA
-                        </a>
-                    </li>
                 </ul>
             </div>
         </div>
@@ -840,10 +592,10 @@
             </p>
 
             <div class="flavors-scroll-wrapper">
-                <button class="scroll-arrow left" onclick="scrollCarousel('flavorsScroll', -1)" aria-label="Anterior">
+                <button class="scroll-arrow left" onclick="scrollFlavors(-1)" aria-label="Anterior">
                     <i class="bi bi-chevron-left"></i>
                 </button>
-                <button class="scroll-arrow right" onclick="scrollCarousel('flavorsScroll', 1)" aria-label="Siguiente">
+                <button class="scroll-arrow right" onclick="scrollFlavors(1)" aria-label="Siguiente">
                     <i class="bi bi-chevron-right"></i>
                 </button>
 
@@ -957,145 +709,7 @@
                         </div>
                     </div>
 
-                    <!-- ADD MORE BUBBLE TEA FLAVOR CARDS HERE -->
-
-                </div>
-            </div>
-
-            <p class="text-center text-muted mt-3 d-block d-lg-none" style="font-size:0.85rem;">
-                <i class="bi bi-arrow-left-right me-1"></i> Desliza para ver más sabores
-            </p>
-        </div>
-    </section>
-
-
-    <!-- ===================== HELADOS ===================== -->
-    <section id="helados" class="section-padding" style="background: var(--white);">
-        <div class="container">
-            <h2 class="section-title center pink-line mb-4">HELADOS</h2>
-            <p class="text-center text-muted mb-5 fs-5">
-                Nieve artesanal con los sabores más creativos, perfecta para combinar con tu bubble tea.
-            </p>
-
-            <div class="flavors-scroll-wrapper">
-                <button class="scroll-arrow left" onclick="scrollCarousel('heladosScroll', -1)" aria-label="Anterior">
-                    <i class="bi bi-chevron-left"></i>
-                </button>
-                <button class="scroll-arrow right" onclick="scrollCarousel('heladosScroll', 1)" aria-label="Siguiente">
-                    <i class="bi bi-chevron-right"></i>
-                </button>
-
-                <div class="flavors-scroll" id="heladosScroll">
-
-                    <div class="flavor-card">
-                        <div class="product-card">
-                            <div class="position-relative">
-                                <div class="product-img" style="background-image:url(images/nieve.png)"></div>
-                                <div class="product-badge" style="background:var(--hotpink)">FAVORITO</div>
-                            </div>
-                            <div class="p-3">
-                                <h3 class="h5 fw-bold mb-2">Fresa con Crema</h3>
-                                <p class="text-muted small mb-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                                <div class="d-flex flex-wrap gap-1">
-                                    <span class="badge" style="background:rgba(233,53,134,0.1);color:var(--hotpink)">Frutal</span>
-                                    <span class="badge" style="background:rgba(233,53,134,0.1);color:var(--hotpink)">Cremoso</span>
-                                    <span class="badge" style="background:rgba(233,53,134,0.1);color:var(--hotpink)">Clásico</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="flavor-card">
-                        <div class="product-card">
-                            <div class="position-relative">
-                                <div class="product-img" style="background-image:url(images/nieve.png)"></div>
-                                <div class="product-badge" style="background:#805ad5">EXCLUSIVO</div>
-                            </div>
-                            <div class="p-3">
-                                <h3 class="h5 fw-bold mb-2">Taro Helado</h3>
-                                <p class="text-muted small mb-3">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                                <div class="d-flex flex-wrap gap-1">
-                                    <span class="badge" style="background:rgba(233,53,134,0.1);color:var(--hotpink)">Aromático</span>
-                                    <span class="badge" style="background:rgba(233,53,134,0.1);color:var(--hotpink)">Suave</span>
-                                    <span class="badge" style="background:rgba(233,53,134,0.1);color:var(--hotpink)">Único</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="flavor-card">
-                        <div class="product-card">
-                            <div class="position-relative">
-                                <div class="product-img" style="background-image:url(images/nieve.png)"></div>
-                                <div class="product-badge" style="background:#d69e2e">LIMITADO</div>
-                            </div>
-                            <div class="p-3">
-                                <h3 class="h5 fw-bold mb-2">Mango Tajín</h3>
-                                <p class="text-muted small mb-3">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                                <div class="d-flex flex-wrap gap-1">
-                                    <span class="badge" style="background:rgba(233,53,134,0.1);color:var(--hotpink)">Picante</span>
-                                    <span class="badge" style="background:rgba(233,53,134,0.1);color:var(--hotpink)">Tropical</span>
-                                    <span class="badge" style="background:rgba(233,53,134,0.1);color:var(--hotpink)">Intenso</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="flavor-card">
-                        <div class="product-card">
-                            <div class="position-relative">
-                                <div class="product-img" style="background-image:url(images/nieve.png)"></div>
-                                <div class="product-badge" style="background:var(--hotpink)">NUEVO</div>
-                            </div>
-                            <div class="p-3">
-                                <h3 class="h5 fw-bold mb-2">Matcha Dream</h3>
-                                <p class="text-muted small mb-3">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                                <div class="d-flex flex-wrap gap-1">
-                                    <span class="badge" style="background:rgba(233,53,134,0.1);color:var(--hotpink)">Herbal</span>
-                                    <span class="badge" style="background:rgba(233,53,134,0.1);color:var(--hotpink)">Suave</span>
-                                    <span class="badge" style="background:rgba(233,53,134,0.1);color:var(--hotpink)">Japonés</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="flavor-card">
-                        <div class="product-card">
-                            <div class="position-relative">
-                                <div class="product-img" style="background-image:url(images/nieve.png)"></div>
-                                <div class="product-badge" style="background:#38a169">ESPECIAL</div>
-                            </div>
-                            <div class="p-3">
-                                <h3 class="h5 fw-bold mb-2">Vainilla Oreo</h3>
-                                <p class="text-muted small mb-3">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                                <div class="d-flex flex-wrap gap-1">
-                                    <span class="badge" style="background:rgba(233,53,134,0.1);color:var(--hotpink)">Dulce</span>
-                                    <span class="badge" style="background:rgba(233,53,134,0.1);color:var(--hotpink)">Cremoso</span>
-                                    <span class="badge" style="background:rgba(233,53,134,0.1);color:var(--hotpink)">Crujiente</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="flavor-card">
-                        <div class="product-card">
-                            <div class="position-relative">
-                                <div class="product-img" style="background-image:url(images/nieve.png)"></div>
-                                <div class="product-badge" style="background:var(--accent-blue)">BEST SELLER</div>
-                            </div>
-                            <div class="p-3">
-                                <h3 class="h5 fw-bold mb-2">Chocolate Belga</h3>
-                                <p class="text-muted small mb-3">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                                <div class="d-flex flex-wrap gap-1">
-                                    <span class="badge" style="background:rgba(233,53,134,0.1);color:var(--hotpink)">Intenso</span>
-                                    <span class="badge" style="background:rgba(233,53,134,0.1);color:var(--hotpink)">Rico</span>
-                                    <span class="badge" style="background:rgba(233,53,134,0.1);color:var(--hotpink)">Premium</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- ADD MORE ICE CREAM FLAVOR CARDS HERE -->
+                    <!-- ADD MORE FLAVOR CARDS HERE -->
 
                 </div>
             </div>
@@ -1161,82 +775,13 @@
     </section>
 
 
-    <!-- ===================== TARJETA DE LEALTAD BANNER ===================== -->
-    <section id="lealtad" class="loyalty-banner">
-        <div class="container">
-            <div class="loyalty-banner-inner">
-
-                <!-- LEFT — light pink side -->
-                <div class="loyalty-banner-left">
-                    <span class="ad-tag">
-                        <i class="bi bi-gift-fill"></i> Programa de lealtad
-                    </span>
-                    <h2>
-                        10 visitas.<br>
-                        1 bebida <em>gratis.</em>
-                    </h2>
-                    <p>
-                        Sin app, sin contraseña. Solo ingresa tu nombre, crea tu tarjeta y empieza a acumular desde hoy.
-                    </p>
-                    <!-- Stamp preview -->
-                    <div class="d-flex align-items-center gap-3 mb-4">
-                        <div class="loyalty-stamp">
-                            <div class="loyalty-stamp-dot on"></div>
-                            <div class="loyalty-stamp-dot on"></div>
-                            <div class="loyalty-stamp-dot on"></div>
-                            <div class="loyalty-stamp-dot on"></div>
-                            <div class="loyalty-stamp-dot on"></div>
-                            <div class="loyalty-stamp-dot on"></div>
-                            <div class="loyalty-stamp-dot on"></div>
-                            <div class="loyalty-stamp-dot"></div>
-                            <div class="loyalty-stamp-dot"></div>
-                            <div class="loyalty-stamp-dot"></div>
-                        </div>
-                        <span style="font-size:0.8rem;color:#9ca3af;">7 / 10 — ¡casi listo!</span>
-                    </div>
-                    <a href="tarjeta.html" class="btn-tarjeta">
-                        <i class="bi bi-card-checklist"></i> Ver mi tarjeta
-                    </a>
-                </div>
-
-                <!-- RIGHT — solid hotpink side with card mockup -->
-                <div class="loyalty-banner-right">
-                    <div class="loyalty-card-mockup">
-                        <div class="mockup-top">
-                            <span class="mockup-brand">ICE<span>LOVE</span></span>
-                            <span class="mockup-free">Lealtad</span>
-                        </div>
-                        <div class="mockup-name">Tu nombre aquí</div>
-                        <div class="mockup-sub">Miembro</div>
-                        <div class="mockup-stamps">
-                            <div class="mockup-dot on"></div>
-                            <div class="mockup-dot on"></div>
-                            <div class="mockup-dot on"></div>
-                            <div class="mockup-dot on"></div>
-                            <div class="mockup-dot on"></div>
-                            <div class="mockup-dot on"></div>
-                            <div class="mockup-dot on"></div>
-                            <div class="mockup-dot"></div>
-                            <div class="mockup-dot"></div>
-                            <div class="mockup-dot"></div>
-                        </div>
-                        <div class="mockup-progress">
-                            <div class="mockup-progress-fill"></div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-
-    <!-- ===================== NOSOTROS ===================== -->
+    <!-- ===================== NOSOTROS — Misión, Visión & Valores ===================== -->
     <section id="nosotros">
         <div class="nosotros-blob-mid"></div>
 
         <div class="container position-relative" style="z-index:2;">
 
+            <!-- Misión + Visión -->
             <div class="row g-4">
                 <div class="col-lg-6 nosotros-animate">
                     <div class="mv-card">
@@ -1256,6 +801,7 @@
                 </div>
             </div>
 
+            <!-- Valores -->
             <div class="valores-row">
                 <p class="valores-row-heading">Nuestros valores fundamentales</p>
                 <div class="row g-3">
@@ -1374,9 +920,9 @@
             if (window.scrollY > 50) document.querySelector('.navbar').classList.add('scrolled');
         });
 
-        // Generic carousel scroll — works for both Sabores and Helados
-        function scrollCarousel(id, direction) {
-            const container = document.getElementById(id);
+        // Flavor carousel arrows
+        function scrollFlavors(direction) {
+            const container = document.getElementById('flavorsScroll');
             container.scrollBy({ left: direction * (240 + 20) * 2, behavior: 'smooth' });
         }
     </script>
