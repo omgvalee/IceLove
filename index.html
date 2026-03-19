@@ -43,7 +43,11 @@
         }
 
         @media (max-width: 768px) {
-            .hero-section { padding-top: 120px; padding-bottom: 60px; }
+            .hero-section {
+        min-height: 60vh; /* cambia 100vh por lo que quieras */
+        padding-top: 80px;
+        padding-bottom: 40px;
+    }
         }
 
         /* =====================
@@ -930,7 +934,7 @@
     <!-- ===================== HERO ===================== -->
     <section id="inicio" class="hero-section">
         <div class="container">
-            <div class="row align-items-center min-vh-100">
+            <div class="row align-items-center">
                 <div class="col-lg-6">
                     <div class="hero-content text-start">
                         <h1 class="display-title text-white mb-4">
@@ -1310,7 +1314,7 @@
                     </span>
                     <h2 class="loyalty-heading">
                         10 visitas.<br>
-                        1 bebida <em>gratis.</em>
+                        Descuento en <em>tu compra.</em>
                     </h2>
                     <p class="loyalty-sub">
                         Sin app, sin contraseña. Solo ingresa tu nombre, crea tu tarjeta y empieza a acumular desde hoy.
