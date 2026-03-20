@@ -76,7 +76,7 @@
         }
 
         .product-img {
-            height: 160px;
+            height: 145px;
             width: 100%;
             object-fit: cover;
             position: relative;
@@ -903,6 +903,77 @@
             .sbar-btn-ig, .sbar-btn-fb { padding: 9px 12px; font-size: 0.8rem; }
             .sbar-actions { gap: 7px; }
         }
+
+    .flavor-tabs-wrapper {
+        display: flex;
+        justify-content: center;
+    }
+    .flavor-tabs {
+        display: inline-flex;
+        background: #ffffff;
+        border: 0.5px solid #e2e8f0;
+        border-radius: 12px;
+        padding: 5px;
+        gap: 4px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+    .flavor-tab {
+        background: none;
+        border: none;
+        padding: 10px 24px;
+        border-radius: 8px;
+        font-weight: 650;
+        font-size: 0.88rem;
+        color: #718096;
+        cursor: pointer;
+        transition: all 0.25s ease;
+        display: flex;
+        align-items: center;
+        gap: 4px;
+    }
+    .flavor-tab:hover { color: var(--primary-blue); background: #f7fafc; }
+    .flavor-tab.active {
+        background: var(--primary-blue);
+        color: #ffffff;
+        box-shadow: 0 4px 12px rgba(26,54,93,0.2);
+    }
+    .tab-count {
+        background: rgba(255,255,255,0.2);
+        border-radius: 20px;
+        padding: 1px 7px;
+        font-size: 0.72rem;
+        font-weight: 700;
+        margin-left: 2px;
+    }
+    .flavor-tab:not(.active) .tab-count {
+        background: rgba(26,54,93,0.1);
+        color: var(--primary-blue);
+    }
+    .flavor-panel { display: none; }
+    .flavor-panel.active { display: block; }
+    .bt-pill {
+        background: #ffffff;
+        border: 0.5px solid #e2e8f0;
+        border-radius: 12px;
+        padding: 16px 12px;
+        text-align: center;
+        transition: transform 0.25s ease, box-shadow 0.25s ease;
+        cursor: default;
+    }
+    .bt-pill:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 10px 24px rgba(0,0,0,0.08);
+    }
+    .bt-pill-circle {
+        width: 48px; height: 48px;
+        border-radius: 50%;
+        margin: 0 auto 10px;
+    }
+    .bt-pill span {
+        font-size: 0.82rem;
+        font-weight: 650;
+        color: var(--dark-text);
+    }
     </style>
 </head>
 <body>
@@ -952,164 +1023,925 @@
     </section>
 
 
-    <!-- ===================== SABORES ===================== -->
+        <!-- ===================== SABORES (3 categorías con tabs) ===================== -->
     <section id="sabores" class="section-padding bg-light">
         <div class="container">
             <h2 class="section-title center mb-4">COLECCIÓN DE SABORES</h2>
             <p class="text-center text-muted mb-5 fs-5">
                 Cada creación es el resultado de una cuidadosa selección de ingredientes y un meticuloso proceso de preparación.
             </p>
-
-            <div class="flavors-scroll-wrapper">
-                <button class="scroll-arrow left" onclick="scrollCarousel('flavorsScroll', -1)" aria-label="Anterior">
-                    <i class="bi bi-chevron-left"></i>
-                </button>
-                <button class="scroll-arrow right" onclick="scrollCarousel('flavorsScroll', 1)" aria-label="Siguiente">
-                    <i class="bi bi-chevron-right"></i>
-                </button>
-
-                <div class="flavors-scroll" id="flavorsScroll">
-
-                    <!-- Choco Boom — pink -->
-                    <div class="flavor-card">
-                        <div class="product-card">
-                            <span class="product-card-accent" style="background:#e93586;"></span>
-                            <div class="position-relative product-img mood-pink">
-                                <div class="boba-circle bc-pink"></div>
-                                <div class="product-badge" style="background:#e93586;">BEST SELLER</div>
-                            </div>
-                            <div class="p-3">
-                                <h3 class="h5 fw-bold mb-2">Choco Boom</h3>
-                                <p class="text-muted small mb-3">Intenso, cremoso y lleno de sabor a chocolate.</p>
-                                <div class="d-flex flex-wrap gap-1">
-                                    <span class="badge tag-mood-pink">Intenso</span>
-                                    <span class="badge tag-mood-pink">Cremoso</span>
-                                    <span class="badge tag-mood-pink">Dulce</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Rainbow Rain — teal -->
-                    <div class="flavor-card">
-                        <div class="product-card">
-                            <span class="product-card-accent" style="background:#03c2d3;"></span>
-                            <div class="position-relative product-img mood-teal">
-                                <div class="boba-circle bc-teal"></div>
-                                <div class="product-badge" style="background:#03c2d3;">NUEVO</div>
-                            </div>
-                            <div class="p-3">
-                                <h3 class="h5 fw-bold mb-2">Rainbow Rain</h3>
-                                <p class="text-muted small mb-3">Cítrico, frutal y refrescante en cada sorbo.</p>
-                                <div class="d-flex flex-wrap gap-1">
-                                    <span class="badge tag-mood-teal">Cítrico</span>
-                                    <span class="badge tag-mood-teal">Refrescante</span>
-                                    <span class="badge tag-mood-teal">Frutal</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Full Taro — purple -->
-                    <div class="flavor-card">
-                        <div class="product-card">
-                            <span class="product-card-accent" style="background:#805ad5;"></span>
-                            <div class="position-relative product-img mood-purple">
-                                <div class="boba-circle bc-purple"></div>
-                                <div class="product-badge" style="background:#805ad5;">EXCLUSIVO</div>
-                            </div>
-                            <div class="p-3">
-                                <h3 class="h5 fw-bold mb-2">Full Taro</h3>
-                                <p class="text-muted small mb-3">Aromático, equilibrado y único en su estilo.</p>
-                                <div class="d-flex flex-wrap gap-1">
-                                    <span class="badge tag-mood-purple">Aromático</span>
-                                    <span class="badge tag-mood-purple">Equilibrado</span>
-                                    <span class="badge tag-mood-purple">Refrescante</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Cookie Bomba — amber -->
-                    <div class="flavor-card">
-                        <div class="product-card">
-                            <span class="product-card-accent" style="background:#d69e2e;"></span>
-                            <div class="position-relative product-img mood-amber">
-                                <div class="boba-circle bc-amber"></div>
-                                <div class="product-badge" style="background:#d69e2e;">LIMITADO</div>
-                            </div>
-                            <div class="p-3">
-                                <h3 class="h5 fw-bold mb-2">Cookie Bomba</h3>
-                                <p class="text-muted small mb-3">Galleta, dulce y explosivo en textura.</p>
-                                <div class="d-flex flex-wrap gap-1">
-                                    <span class="badge tag-mood-amber">Galleta</span>
-                                    <span class="badge tag-mood-amber">Dulce</span>
-                                    <span class="badge tag-mood-amber">Explosivo</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Monkey — blue -->
-                    <div class="flavor-card">
-                        <div class="product-card">
-                            <span class="product-card-accent" style="background:#4299e1;"></span>
-                            <div class="position-relative product-img mood-blue">
-                                <div class="boba-circle bc-blue"></div>
-                                <div class="product-badge" style="background:#4299e1;">NUEVO</div>
-                            </div>
-                            <div class="p-3">
-                                <h3 class="h5 fw-bold mb-2">Monkey</h3>
-                                <p class="text-muted small mb-3">Cremoso, ligero y dulce con notas tropicales.</p>
-                                <div class="d-flex flex-wrap gap-1">
-                                    <span class="badge tag-mood-blue">Cremoso</span>
-                                    <span class="badge tag-mood-blue">Ligero</span>
-                                    <span class="badge tag-mood-blue">Dulce</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Pink Phanter — green -->
-                    <div class="flavor-card">
-                        <div class="product-card">
-                            <span class="product-card-accent" style="background:#38a169;"></span>
-                            <div class="position-relative product-img mood-green">
-                                <div class="boba-circle bc-green"></div>
-                                <div class="product-badge" style="background:#38a169;">ESPECIAL</div>
-                            </div>
-                            <div class="p-3">
-                                <h3 class="h5 fw-bold mb-2">Pink Phanter</h3>
-                                <p class="text-muted small mb-3">Cremoso, clásico y con un toque frutal.</p>
-                                <div class="d-flex flex-wrap gap-1">
-                                    <span class="badge tag-mood-green">Cremoso</span>
-                                    <span class="badge tag-mood-green">Clásico</span>
-                                    <span class="badge tag-mood-green">Frutal</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- ADD MORE BUBBLE TEA FLAVOR CARDS HERE -->
-
+ 
+            <!-- Category Tabs -->
+            <div class="flavor-tabs-wrapper mb-4">
+                <div class="flavor-tabs" id="flavorTabs">
+                    <button class="flavor-tab active" data-tab="clasicas">
+                        <i class="bi bi-cup-straw me-2"></i>Bobas Clásicas
+                        <span class="tab-count">32</span>
+                    </button>
+                    <button class="flavor-tab" data-tab="premium">
+                        <i class="bi bi-stars me-2"></i>Bobas Premium
+                        <span class="tab-count">7</span>
+                    </button>
+                    <button class="flavor-tab" data-tab="bubbletea">
+                        <i class="bi bi-droplet-half me-2"></i>Bubble Tea
+                        <span class="tab-count">9</span>
+                    </button>
                 </div>
             </div>
-
-            <p class="text-center text-muted mt-3 d-block d-lg-none" style="font-size:0.85rem;">
-                <i class="bi bi-arrow-left-right me-1"></i> Desliza para ver más sabores
-            </p>
+ 
+            <!-- ========== BOBAS CLÁSICAS ========== -->
+            <div class="flavor-panel active" id="panel-clasicas">
+                <div class="flavors-scroll-wrapper">
+                    <button class="scroll-arrow left" onclick="scrollCarousel('clasicasScroll', -1)" aria-label="Anterior">
+                        <i class="bi bi-chevron-left"></i>
+                    </button>
+                    <button class="scroll-arrow right" onclick="scrollCarousel('clasicasScroll', 1)" aria-label="Siguiente">
+                        <i class="bi bi-chevron-right"></i>
+                    </button>
+ 
+                    <div class="flavors-scroll" id="clasicasScroll">
+ 
+                        <!-- Choco Boom -->
+                        <div class="flavor-card">
+                            <div class="product-card">
+                                <span class="product-card-accent" style="background:#e93586;"></span>
+                                <div class="position-relative product-img mood-pink">
+                                    <img src="images/chocoboom3.png" alt="Choco Boom" class="img-fluid">
+                                    <div class="product-badge" style="background:#e93586;">BEST SELLER</div>
+                                </div>
+                                <div class="p-3">
+                                    <h3 class="h5 fw-bold mb-1">Choco Boom</h3>
+                                    <p class="text-muted small mb-2" style="font-size:0.78rem;">Nutella, crema de cacahuate y helado de vainilla</p>
+                                    <div class="d-flex flex-wrap gap-1">
+                                        <span class="badge tag-mood-pink">Chocolate</span>
+                                        <span class="badge tag-mood-pink">Cremoso</span>
+                                        <span class="badge tag-mood-pink">Dulce</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+ 
+                        <!-- Cookie Bomba -->
+                        <div class="flavor-card">
+                            <div class="product-card">
+                                <span class="product-card-accent" style="background:#d69e2e;"></span>
+                                <div class="position-relative product-img mood-amber">
+                                    <img src="images/cookiebomba.png" alt="Cookie Bomba" class="img-fluid">
+                                    <div class="product-badge" style="background:#d69e2e;">FAVORITO</div>
+                                </div>
+                                <div class="p-3">
+                                    <h3 class="h5 fw-bold mb-1">Cookie Bomba</h3>
+                                    <p class="text-muted small mb-2" style="font-size:0.78rem;">Galleta Oreo con helado de vainilla</p>
+                                    <div class="d-flex flex-wrap gap-1">
+                                        <span class="badge tag-mood-amber">Galleta</span>
+                                        <span class="badge tag-mood-amber">Crujiente</span>
+                                        <span class="badge tag-mood-amber">Dulce</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+ 
+                        <!-- Caramel-Ito -->
+                        <div class="flavor-card">
+                            <div class="product-card">
+                                <span class="product-card-accent" style="background:#d69e2e;"></span>
+                                <div class="position-relative product-img mood-amber">
+                                    <img src="images/caramelito.png" alt="Caramel-Ito" class="img-fluid">
+                                    <div class="product-badge" style="background:#d69e2e;">ESPECIAL</div>
+                                </div>
+                                <div class="p-3">
+                                    <h3 class="h5 fw-bold mb-1">Caramel-Ito</h3>
+                                    <p class="text-muted small mb-2" style="font-size:0.78rem;">Caramelo, cajeta y helado de vainilla</p>
+                                    <div class="d-flex flex-wrap gap-1">
+                                        <span class="badge tag-mood-amber">Caramelo</span>
+                                        <span class="badge tag-mood-amber">Dulce</span>
+                                        <span class="badge tag-mood-amber">Cremoso</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+ 
+                        <!-- Choco Pink -->
+                        <div class="flavor-card">
+                            <div class="product-card">
+                                <span class="product-card-accent" style="background:#e93586;"></span>
+                                <div class="position-relative product-img mood-pink">
+                                    <img src="images/chocopink.png" alt="Choco Pink" class="img-fluid">
+                                    <div class="product-badge" style="background:#e93586;">NUEVO</div>
+                                </div>
+                                <div class="p-3">
+                                    <h3 class="h5 fw-bold mb-1">Choco Pink</h3>
+                                    <p class="text-muted small mb-2" style="font-size:0.78rem;">Fresa, nutella y helado de fresa</p>
+                                    <div class="d-flex flex-wrap gap-1">
+                                        <span class="badge tag-mood-pink">Fresa</span>
+                                        <span class="badge tag-mood-pink">Chocolate</span>
+                                        <span class="badge tag-mood-pink">Frutal</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+ 
+                        <!-- Monkey -->
+                        <div class="flavor-card">
+                            <div class="product-card">
+                                <span class="product-card-accent" style="background:#4299e1;"></span>
+                                <div class="position-relative product-img mood-blue">
+                                    <img src="images/monkey.png" alt="Monkey" class="img-fluid">
+                                    <div class="product-badge" style="background:#4299e1;">NUEVO</div>
+                                </div>
+                                <div class="p-3">
+                                    <h3 class="h5 fw-bold mb-1">Monkey</h3>
+                                    <p class="text-muted small mb-2" style="font-size:0.78rem;">Plátano, crema de cacahuate y helado de vainilla</p>
+                                    <div class="d-flex flex-wrap gap-1">
+                                        <span class="badge tag-mood-blue">Plátano</span>
+                                        <span class="badge tag-mood-blue">Cremoso</span>
+                                        <span class="badge tag-mood-blue">Tropical</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+ 
+                        <!-- Rainbow Rain -->
+                        <div class="flavor-card">
+                            <div class="product-card">
+                                <span class="product-card-accent" style="background:#e93586;"></span>
+                                <div class="position-relative product-img mood-pink">
+                                    <img src="images/rainbowrain.png" alt="Rainbow Rain" class="img-fluid">
+                                    <div class="product-badge" style="background:#e93586;">POPULAR</div>
+                                </div>
+                                <div class="p-3">
+                                    <h3 class="h5 fw-bold mb-1">Rainbow Rain</h3>
+                                    <p class="text-muted small mb-2" style="font-size:0.78rem;">Todas las berries con plátano y helado de vainilla</p>
+                                    <div class="d-flex flex-wrap gap-1">
+                                        <span class="badge tag-mood-pink">Berries</span>
+                                        <span class="badge tag-mood-pink">Frutal</span>
+                                        <span class="badge tag-mood-pink">Refrescante</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+ 
+                        <!-- Tentacion -->
+                        <div class="flavor-card">
+                            <div class="product-card">
+                                <span class="product-card-accent" style="background:#805ad5;"></span>
+                                <div class="position-relative product-img mood-purple">
+                                    <img src="images/tentacion.png" alt="Tentación" class="img-fluid">
+                                    <div class="product-badge" style="background:#805ad5;">ESPECIAL</div>
+                                </div>
+                                <div class="p-3">
+                                    <h3 class="h5 fw-bold mb-1">Tentación</h3>
+                                    <p class="text-muted small mb-2" style="font-size:0.78rem;">Lychee, frambuesa y helado de vainilla</p>
+                                    <div class="d-flex flex-wrap gap-1">
+                                        <span class="badge tag-mood-purple">Lychee</span>
+                                        <span class="badge tag-mood-purple">Frambuesa</span>
+                                        <span class="badge tag-mood-purple">Floral</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+ 
+                        <!-- Lemon Green -->
+                        <div class="flavor-card">
+                            <div class="product-card">
+                                <span class="product-card-accent" style="background:#38a169;"></span>
+                                <div class="position-relative product-img mood-green">
+                                    <img src="images/lemongreen.png" alt="Lemon Green" class="img-fluid">
+                                    <div class="product-badge" style="background:#38a169;">FRESCO</div>
+                                </div>
+                                <div class="p-3">
+                                    <h3 class="h5 fw-bold mb-1">Lemon Green</h3>
+                                    <p class="text-muted small mb-2" style="font-size:0.78rem;">Kiwi, manzana verde y helado de limón</p>
+                                    <div class="d-flex flex-wrap gap-1">
+                                        <span class="badge tag-mood-green">Cítrico</span>
+                                        <span class="badge tag-mood-green">Kiwi</span>
+                                        <span class="badge tag-mood-green">Refrescante</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+ 
+                        <!-- Pink Panter -->
+                        <div class="flavor-card">
+                            <div class="product-card">
+                                <span class="product-card-accent" style="background:#e93586;"></span>
+                                <div class="position-relative product-img mood-pink">
+                                    <img src="images/pinkpanter.png" alt="Pink Panter" class="img-fluid">
+                                    <div class="product-badge" style="background:#e93586;">FAVORITO</div>
+                                </div>
+                                <div class="p-3">
+                                    <h3 class="h5 fw-bold mb-1">Pink Panter</h3>
+                                    <p class="text-muted small mb-2" style="font-size:0.78rem;">Piña, crema de coco, fresa y lechera</p>
+                                    <div class="d-flex flex-wrap gap-1">
+                                        <span class="badge tag-mood-pink">Tropical</span>
+                                        <span class="badge tag-mood-pink">Coco</span>
+                                        <span class="badge tag-mood-pink">Cremoso</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+ 
+                        <!-- Passion Love -->
+                        <div class="flavor-card">
+                            <div class="product-card">
+                                <span class="product-card-accent" style="background:#d69e2e;"></span>
+                                <div class="position-relative product-img mood-amber">
+                                    <img src="images/passionlove.png" alt="Passion Love" class="img-fluid">
+                                    <div class="product-badge" style="background:#d69e2e;">NUEVO</div>
+                                </div>
+                                <div class="p-3">
+                                    <h3 class="h5 fw-bold mb-1">Passion Love</h3>
+                                    <p class="text-muted small mb-2" style="font-size:0.78rem;">Kiwi, sandía y fruta de la pasión</p>
+                                    <div class="d-flex flex-wrap gap-1">
+                                        <span class="badge tag-mood-amber">Pasión</span>
+                                        <span class="badge tag-mood-amber">Tropical</span>
+                                        <span class="badge tag-mood-amber">Refrescante</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+ 
+                        <!-- Beso Playero -->
+                        <div class="flavor-card">
+                            <div class="product-card">
+                                <span class="product-card-accent" style="background:#03c2d3;"></span>
+                                <div class="position-relative product-img mood-teal">
+                                    <img src="images/besoplayero.png" alt="Beso Playero" class="img-fluid">
+                                    <div class="product-badge" style="background:#03c2d3;">VERANO</div>
+                                </div>
+                                <div class="p-3">
+                                    <h3 class="h5 fw-bold mb-1">Beso Playero</h3>
+                                    <p class="text-muted small mb-2" style="font-size:0.78rem;">Lychee, fresa y un toque de limón</p>
+                                    <div class="d-flex flex-wrap gap-1">
+                                        <span class="badge tag-mood-teal">Lychee</span>
+                                        <span class="badge tag-mood-teal">Cítrico</span>
+                                        <span class="badge tag-mood-teal">Ligero</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+ 
+                        <!-- Citrus Boom -->
+                        <div class="flavor-card">
+                            <div class="product-card">
+                                <span class="product-card-accent" style="background:#38a169;"></span>
+                                <div class="position-relative product-img mood-green">
+                                    <img src="images/citrusboom.png" alt="Citrus Boom" class="img-fluid">
+                                    <div class="product-badge" style="background:#38a169;">INTENSO</div>
+                                </div>
+                                <div class="p-3">
+                                    <h3 class="h5 fw-bold mb-1">Citrus Boom</h3>
+                                    <p class="text-muted small mb-2" style="font-size:0.78rem;">Kiwi, fresa, frambuesa y helado de limón</p>
+                                    <div class="d-flex flex-wrap gap-1">
+                                        <span class="badge tag-mood-green">Cítrico</span>
+                                        <span class="badge tag-mood-green">Berries</span>
+                                        <span class="badge tag-mood-green">Explosivo</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+ 
+                        <!-- Sexy Nila -->
+                        <div class="flavor-card">
+                            <div class="product-card">
+                                <span class="product-card-accent" style="background:#e93586;"></span>
+                                <div class="position-relative product-img mood-pink">
+                                    <img src="images/sexynila.png" alt="Sexy Nila" class="img-fluid">
+                                    <div class="product-badge" style="background:#e93586;">CLÁSICO</div>
+                                </div>
+                                <div class="p-3">
+                                    <h3 class="h5 fw-bold mb-1">Sexy Nila</h3>
+                                    <p class="text-muted small mb-2" style="font-size:0.78rem;">Plátano, fresa y helado de vainilla</p>
+                                    <div class="d-flex flex-wrap gap-1">
+                                        <span class="badge tag-mood-pink">Fresa</span>
+                                        <span class="badge tag-mood-pink">Plátano</span>
+                                        <span class="badge tag-mood-pink">Cremoso</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+ 
+                        <!-- Be Delicious -->
+                        <div class="flavor-card">
+                            <div class="product-card">
+                                <span class="product-card-accent" style="background:#38a169;"></span>
+                                <div class="position-relative product-img mood-green">
+                                    <img src="images/bedelicious.png" alt="Be Delicious" class="img-fluid">
+                                    <div class="product-badge" style="background:#38a169;">FRESCO</div>
+                                </div>
+                                <div class="p-3">
+                                    <h3 class="h5 fw-bold mb-1">Be Delicious</h3>
+                                    <p class="text-muted small mb-2" style="font-size:0.78rem;">Manzana verde con helado de vainilla</p>
+                                    <div class="d-flex flex-wrap gap-1">
+                                        <span class="badge tag-mood-green">Manzana</span>
+                                        <span class="badge tag-mood-green">Suave</span>
+                                        <span class="badge tag-mood-green">Refrescante</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+ 
+                        <!-- Te Chai -->
+                        <div class="flavor-card">
+                            <div class="product-card">
+                                <span class="product-card-accent" style="background:#d69e2e;"></span>
+                                <div class="position-relative product-img mood-amber">
+                                    <img src="images/techai.png" alt="Té Chai" class="img-fluid">
+                                    <div class="product-badge" style="background:#d69e2e;">ESPECIAL</div>
+                                </div>
+                                <div class="p-3">
+                                    <h3 class="h5 fw-bold mb-1">Té Chai</h3>
+                                    <p class="text-muted small mb-2" style="font-size:0.78rem;">Té chai vainilla y helado de cajeta</p>
+                                    <div class="d-flex flex-wrap gap-1">
+                                        <span class="badge tag-mood-amber">Chai</span>
+                                        <span class="badge tag-mood-amber">Especiado</span>
+                                        <span class="badge tag-mood-amber">Aromático</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+ 
+                        <!-- Chocoroco -->
+                        <div class="flavor-card">
+                            <div class="product-card">
+                                <span class="product-card-accent" style="background:#4299e1;"></span>
+                                <div class="position-relative product-img mood-blue">
+                                    <img src="images/chocoroco.png" alt="Chocoroco" class="img-fluid">
+                                    <div class="product-badge" style="background:#4299e1;">TROPICAL</div>
+                                </div>
+                                <div class="p-3">
+                                    <h3 class="h5 fw-bold mb-1">Chocoroco</h3>
+                                    <p class="text-muted small mb-2" style="font-size:0.78rem;">Coco, plátano y nutella</p>
+                                    <div class="d-flex flex-wrap gap-1">
+                                        <span class="badge tag-mood-blue">Coco</span>
+                                        <span class="badge tag-mood-blue">Chocolate</span>
+                                        <span class="badge tag-mood-blue">Tropical</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+ 
+                        <!-- Yellow Happy -->
+                        <div class="flavor-card">
+                            <div class="product-card">
+                                <span class="product-card-accent" style="background:#d69e2e;"></span>
+                                <div class="position-relative product-img mood-amber">
+                                    <img src="images/yellowhappy.png" alt="Yellow Happy" class="img-fluid">
+                                    <div class="product-badge" style="background:#d69e2e;">NUEVO</div>
+                                </div>
+                                <div class="p-3">
+                                    <h3 class="h5 fw-bold mb-1">Yellow Happy</h3>
+                                    <p class="text-muted small mb-2" style="font-size:0.78rem;">Mango y helado de vainilla</p>
+                                    <div class="d-flex flex-wrap gap-1">
+                                        <span class="badge tag-mood-amber">Mango</span>
+                                        <span class="badge tag-mood-amber">Dulce</span>
+                                        <span class="badge tag-mood-amber">Tropical</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+ 
+                        <!-- Beach -->
+                        <div class="flavor-card">
+                            <div class="product-card">
+                                <span class="product-card-accent" style="background:#03c2d3;"></span>
+                                <div class="position-relative product-img mood-teal">
+                                    <div class="boba-circle bc-teal"></div>
+                                    <div class="product-badge" style="background:#03c2d3;">VERANO</div>
+                                </div>
+                                <div class="p-3">
+                                    <h3 class="h5 fw-bold mb-1">Beach</h3>
+                                    <p class="text-muted small mb-2" style="font-size:0.78rem;">Mango y crema de coco</p>
+                                    <div class="d-flex flex-wrap gap-1">
+                                        <span class="badge tag-mood-teal">Mango</span>
+                                        <span class="badge tag-mood-teal">Coco</span>
+                                        <span class="badge tag-mood-teal">Tropical</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+ 
+                        <!-- Paradise -->
+                        <div class="flavor-card">
+                            <div class="product-card">
+                                <span class="product-card-accent" style="background:#d69e2e;"></span>
+                                <div class="position-relative product-img mood-amber">
+                                    <div class="boba-circle bc-amber"></div>
+                                    <div class="product-badge" style="background:#d69e2e;">ESPECIAL</div>
+                                </div>
+                                <div class="p-3">
+                                    <h3 class="h5 fw-bold mb-1">Paradise</h3>
+                                    <p class="text-muted small mb-2" style="font-size:0.78rem;">Mango y vainilla francesa</p>
+                                    <div class="d-flex flex-wrap gap-1">
+                                        <span class="badge tag-mood-amber">Mango</span>
+                                        <span class="badge tag-mood-amber">Vainilla</span>
+                                        <span class="badge tag-mood-amber">Suave</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+ 
+                        <!-- Capuchino -->
+                        <div class="flavor-card">
+                            <div class="product-card">
+                                <span class="product-card-accent" style="background:#805ad5;"></span>
+                                <div class="position-relative product-img mood-purple">
+                                    <div class="boba-circle bc-purple"></div>
+                                    <div class="product-badge" style="background:#805ad5;">CAFÉ</div>
+                                </div>
+                                <div class="p-3">
+                                    <h3 class="h5 fw-bold mb-1">Capuchino</h3>
+                                    <p class="text-muted small mb-2" style="font-size:0.78rem;">Café y helado de vainilla</p>
+                                    <div class="d-flex flex-wrap gap-1">
+                                        <span class="badge tag-mood-purple">Café</span>
+                                        <span class="badge tag-mood-purple">Cremoso</span>
+                                        <span class="badge tag-mood-purple">Intenso</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+ 
+                        <!-- Berry Pop -->
+                        <div class="flavor-card">
+                            <div class="product-card">
+                                <span class="product-card-accent" style="background:#e93586;"></span>
+                                <div class="position-relative product-img mood-pink">
+                                    <div class="boba-circle bc-pink"></div>
+                                    <div class="product-badge" style="background:#e93586;">NUEVO</div>
+                                </div>
+                                <div class="p-3">
+                                    <h3 class="h5 fw-bold mb-1">Berry Pop</h3>
+                                    <p class="text-muted small mb-2" style="font-size:0.78rem;">Banana con blueberry</p>
+                                    <div class="d-flex flex-wrap gap-1">
+                                        <span class="badge tag-mood-pink">Blueberry</span>
+                                        <span class="badge tag-mood-pink">Frutal</span>
+                                        <span class="badge tag-mood-pink">Dulce</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+ 
+                        <!-- Happy Lada -->
+                        <div class="flavor-card">
+                            <div class="product-card">
+                                <span class="product-card-accent" style="background:#03c2d3;"></span>
+                                <div class="position-relative product-img mood-teal">
+                                    <div class="boba-circle bc-teal"></div>
+                                    <div class="product-badge" style="background:#03c2d3;">TROPICAL</div>
+                                </div>
+                                <div class="p-3">
+                                    <h3 class="h5 fw-bold mb-1">Happy Lada</h3>
+                                    <p class="text-muted small mb-2" style="font-size:0.78rem;">Piña y crema de coco</p>
+                                    <div class="d-flex flex-wrap gap-1">
+                                        <span class="badge tag-mood-teal">Piña</span>
+                                        <span class="badge tag-mood-teal">Coco</span>
+                                        <span class="badge tag-mood-teal">Tropical</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+ 
+                        <!-- Maramango -->
+                        <div class="flavor-card">
+                            <div class="product-card">
+                                <span class="product-card-accent" style="background:#d69e2e;"></span>
+                                <div class="position-relative product-img mood-amber">
+                                    <div class="boba-circle bc-amber"></div>
+                                    <div class="product-badge" style="background:#d69e2e;">EXÓTICO</div>
+                                </div>
+                                <div class="p-3">
+                                    <h3 class="h5 fw-bold mb-1">Maramango</h3>
+                                    <p class="text-muted small mb-2" style="font-size:0.78rem;">Mango y maracuyá</p>
+                                    <div class="d-flex flex-wrap gap-1">
+                                        <span class="badge tag-mood-amber">Mango</span>
+                                        <span class="badge tag-mood-amber">Maracuyá</span>
+                                        <span class="badge tag-mood-amber">Tropical</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+ 
+                        <!-- Mangonada -->
+                        <div class="flavor-card">
+                            <div class="product-card">
+                                <span class="product-card-accent" style="background:#d69e2e;"></span>
+                                <div class="position-relative product-img mood-amber">
+                                    <div class="boba-circle bc-amber"></div>
+                                    <div class="product-badge" style="background:#e93586;">PICOSITO</div>
+                                </div>
+                                <div class="p-3">
+                                    <h3 class="h5 fw-bold mb-1">Mangonada</h3>
+                                    <p class="text-muted small mb-2" style="font-size:0.78rem;">Mango y chamoy</p>
+                                    <div class="d-flex flex-wrap gap-1">
+                                        <span class="badge tag-mood-amber">Mango</span>
+                                        <span class="badge tag-mood-amber">Chamoy</span>
+                                        <span class="badge tag-mood-amber">Picante</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+ 
+                        <!-- Coco Blue -->
+                        <div class="flavor-card">
+                            <div class="product-card">
+                                <span class="product-card-accent" style="background:#4299e1;"></span>
+                                <div class="position-relative product-img mood-blue">
+                                    <div class="boba-circle bc-blue"></div>
+                                    <div class="product-badge" style="background:#4299e1;">NUEVO</div>
+                                </div>
+                                <div class="p-3">
+                                    <h3 class="h5 fw-bold mb-1">Coco Blue</h3>
+                                    <p class="text-muted small mb-2" style="font-size:0.78rem;">Blueberry con coco</p>
+                                    <div class="d-flex flex-wrap gap-1">
+                                        <span class="badge tag-mood-blue">Blueberry</span>
+                                        <span class="badge tag-mood-blue">Coco</span>
+                                        <span class="badge tag-mood-blue">Frutal</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+ 
+                        <!-- Tropical Kiss -->
+                        <div class="flavor-card">
+                            <div class="product-card">
+                                <span class="product-card-accent" style="background:#d69e2e;"></span>
+                                <div class="position-relative product-img mood-amber">
+                                    <div class="boba-circle bc-amber"></div>
+                                    <div class="product-badge" style="background:#d69e2e;">EXÓTICO</div>
+                                </div>
+                                <div class="p-3">
+                                    <h3 class="h5 fw-bold mb-1">Tropical Kiss</h3>
+                                    <p class="text-muted small mb-2" style="font-size:0.78rem;">Maracuyá y lychee</p>
+                                    <div class="d-flex flex-wrap gap-1">
+                                        <span class="badge tag-mood-amber">Maracuyá</span>
+                                        <span class="badge tag-mood-amber">Lychee</span>
+                                        <span class="badge tag-mood-amber">Exótico</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+ 
+                        <!-- Mango Rock -->
+                        <div class="flavor-card">
+                            <div class="product-card">
+                                <span class="product-card-accent" style="background:#805ad5;"></span>
+                                <div class="position-relative product-img mood-purple">
+                                    <div class="boba-circle bc-purple"></div>
+                                    <div class="product-badge" style="background:#805ad5;">ESPECIAL</div>
+                                </div>
+                                <div class="p-3">
+                                    <h3 class="h5 fw-bold mb-1">Mango Rock</h3>
+                                    <p class="text-muted small mb-2" style="font-size:0.78rem;">Mango y lychee</p>
+                                    <div class="d-flex flex-wrap gap-1">
+                                        <span class="badge tag-mood-purple">Mango</span>
+                                        <span class="badge tag-mood-purple">Lychee</span>
+                                        <span class="badge tag-mood-purple">Floral</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+ 
+                        <!-- Fres Nila -->
+                        <div class="flavor-card">
+                            <div class="product-card">
+                                <span class="product-card-accent" style="background:#e93586;"></span>
+                                <div class="position-relative product-img mood-pink">
+                                    <div class="boba-circle bc-pink"></div>
+                                    <div class="product-badge" style="background:#e93586;">CLÁSICO</div>
+                                </div>
+                                <div class="p-3">
+                                    <h3 class="h5 fw-bold mb-1">Fres Nila</h3>
+                                    <p class="text-muted small mb-2" style="font-size:0.78rem;">Fresa y vainilla francesa</p>
+                                    <div class="d-flex flex-wrap gap-1">
+                                        <span class="badge tag-mood-pink">Fresa</span>
+                                        <span class="badge tag-mood-pink">Vainilla</span>
+                                        <span class="badge tag-mood-pink">Cremoso</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+ 
+                        <!-- Fresh-Cool -->
+                        <div class="flavor-card">
+                            <div class="product-card">
+                                <span class="product-card-accent" style="background:#03c2d3;"></span>
+                                <div class="position-relative product-img mood-teal">
+                                    <div class="boba-circle bc-teal"></div>
+                                    <div class="product-badge" style="background:#03c2d3;">REFRESCANTE</div>
+                                </div>
+                                <div class="p-3">
+                                    <h3 class="h5 fw-bold mb-1">Fresh-Cool</h3>
+                                    <p class="text-muted small mb-2" style="font-size:0.78rem;">Fresa y coco</p>
+                                    <div class="d-flex flex-wrap gap-1">
+                                        <span class="badge tag-mood-teal">Fresa</span>
+                                        <span class="badge tag-mood-teal">Coco</span>
+                                        <span class="badge tag-mood-teal">Ligero</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+ 
+                        <!-- Freskiwi -->
+                        <div class="flavor-card">
+                            <div class="product-card">
+                                <span class="product-card-accent" style="background:#38a169;"></span>
+                                <div class="position-relative product-img mood-green">
+                                    <div class="boba-circle bc-green"></div>
+                                    <div class="product-badge" style="background:#38a169;">FRESCO</div>
+                                </div>
+                                <div class="p-3">
+                                    <h3 class="h5 fw-bold mb-1">Freskiwi</h3>
+                                    <p class="text-muted small mb-2" style="font-size:0.78rem;">Fresa y kiwi</p>
+                                    <div class="d-flex flex-wrap gap-1">
+                                        <span class="badge tag-mood-green">Fresa</span>
+                                        <span class="badge tag-mood-green">Kiwi</span>
+                                        <span class="badge tag-mood-green">Cítrico</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+ 
+                        <!-- Moka -->
+                        <div class="flavor-card">
+                            <div class="product-card">
+                                <span class="product-card-accent" style="background:#805ad5;"></span>
+                                <div class="position-relative product-img mood-purple">
+                                    <div class="boba-circle bc-purple"></div>
+                                    <div class="product-badge" style="background:#805ad5;">CAFÉ</div>
+                                </div>
+                                <div class="p-3">
+                                    <h3 class="h5 fw-bold mb-1">Moka</h3>
+                                    <p class="text-muted small mb-2" style="font-size:0.78rem;">Café y moka</p>
+                                    <div class="d-flex flex-wrap gap-1">
+                                        <span class="badge tag-mood-purple">Café</span>
+                                        <span class="badge tag-mood-purple">Intenso</span>
+                                        <span class="badge tag-mood-purple">Amargo</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+ 
+                        <!-- Naranpiña -->
+                        <div class="flavor-card">
+                            <div class="product-card">
+                                <span class="product-card-accent" style="background:#d69e2e;"></span>
+                                <div class="position-relative product-img mood-amber">
+                                    <div class="boba-circle bc-amber"></div>
+                                    <div class="product-badge" style="background:#e93586;">PICOSITO</div>
+                                </div>
+                                <div class="p-3">
+                                    <h3 class="h5 fw-bold mb-1">Naranpiña</h3>
+                                    <p class="text-muted small mb-2" style="font-size:0.78rem;">Naranja, piña y chamoy</p>
+                                    <div class="d-flex flex-wrap gap-1">
+                                        <span class="badge tag-mood-amber">Naranja</span>
+                                        <span class="badge tag-mood-amber">Chamoy</span>
+                                        <span class="badge tag-mood-amber">Picante</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+ 
+                    </div>
+                </div>
+                <p class="text-center text-muted mt-3 d-block d-lg-none" style="font-size:0.85rem;">
+                    <i class="bi bi-arrow-left-right me-1"></i> Desliza para ver más sabores
+                </p>
+            </div>
+ 
+            <!-- ========== BOBAS PREMIUM ========== -->
+            <div class="flavor-panel" id="panel-premium">
+                <div class="flavors-scroll-wrapper">
+                    <button class="scroll-arrow left" onclick="scrollCarousel('premiumScroll', -1)" aria-label="Anterior">
+                        <i class="bi bi-chevron-left"></i>
+                    </button>
+                    <button class="scroll-arrow right" onclick="scrollCarousel('premiumScroll', 1)" aria-label="Siguiente">
+                        <i class="bi bi-chevron-right"></i>
+                    </button>
+ 
+                    <div class="flavors-scroll" id="premiumScroll">
+ 
+                        <!-- Purple Kiss -->
+                        <div class="flavor-card">
+                            <div class="product-card">
+                                <span class="product-card-accent" style="background:#805ad5;"></span>
+                                <div class="position-relative product-img mood-purple">
+                                    <div class="boba-circle bc-purple"></div>
+                                    <div class="product-badge" style="background:#805ad5;">PREMIUM</div>
+                                </div>
+                                <div class="p-3">
+                                    <h3 class="h5 fw-bold mb-1">Purple Kiss</h3>
+                                    <p class="text-muted small mb-2" style="font-size:0.78rem;">Taro, fresa y blueberry</p>
+                                    <div class="d-flex flex-wrap gap-1">
+                                        <span class="badge tag-mood-purple">Taro</span>
+                                        <span class="badge tag-mood-purple">Berries</span>
+                                        <span class="badge tag-mood-purple">Exclusivo</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+ 
+                        <!-- Matcha -->
+                        <div class="flavor-card">
+                            <div class="product-card">
+                                <span class="product-card-accent" style="background:#38a169;"></span>
+                                <div class="position-relative product-img mood-green">
+                                    <div class="boba-circle bc-green"></div>
+                                    <div class="product-badge" style="background:#38a169;">PREMIUM</div>
+                                </div>
+                                <div class="p-3">
+                                    <h3 class="h5 fw-bold mb-1">Matcha</h3>
+                                    <p class="text-muted small mb-2" style="font-size:0.78rem;">Full matcha, oreo y chocoreta</p>
+                                    <div class="d-flex flex-wrap gap-1">
+                                        <span class="badge tag-mood-green">Matcha</span>
+                                        <span class="badge tag-mood-green">Japonés</span>
+                                        <span class="badge tag-mood-green">Único</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+ 
+                        <!-- Adiccion -->
+                        <div class="flavor-card">
+                            <div class="product-card">
+                                <span class="product-card-accent" style="background:#805ad5;"></span>
+                                <div class="position-relative product-img mood-purple">
+                                    <div class="boba-circle bc-purple"></div>
+                                    <div class="product-badge" style="background:#805ad5;">PREMIUM</div>
+                                </div>
+                                <div class="p-3">
+                                    <h3 class="h5 fw-bold mb-1">Adicción</h3>
+                                    <p class="text-muted small mb-2" style="font-size:0.78rem;">Taro con fresa</p>
+                                    <div class="d-flex flex-wrap gap-1">
+                                        <span class="badge tag-mood-purple">Taro</span>
+                                        <span class="badge tag-mood-purple">Fresa</span>
+                                        <span class="badge tag-mood-purple">Aromático</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+ 
+                        <!-- Anna Banana -->
+                        <div class="flavor-card">
+                            <div class="product-card">
+                                <span class="product-card-accent" style="background:#805ad5;"></span>
+                                <div class="position-relative product-img mood-purple">
+                                    <div class="boba-circle bc-purple"></div>
+                                    <div class="product-badge" style="background:#805ad5;">PREMIUM</div>
+                                </div>
+                                <div class="p-3">
+                                    <h3 class="h5 fw-bold mb-1">Anna Banana</h3>
+                                    <p class="text-muted small mb-2" style="font-size:0.78rem;">Banana con taro</p>
+                                    <div class="d-flex flex-wrap gap-1">
+                                        <span class="badge tag-mood-purple">Taro</span>
+                                        <span class="badge tag-mood-purple">Plátano</span>
+                                        <span class="badge tag-mood-purple">Cremoso</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+ 
+                        <!-- Carajillo -->
+                        <div class="flavor-card">
+                            <div class="product-card">
+                                <span class="product-card-accent" style="background:#d69e2e;"></span>
+                                <div class="position-relative product-img mood-amber">
+                                    <div class="boba-circle bc-amber"></div>
+                                    <div class="product-badge" style="background:#d69e2e;">PREMIUM</div>
+                                </div>
+                                <div class="p-3">
+                                    <h3 class="h5 fw-bold mb-1">Carajillo</h3>
+                                    <p class="text-muted small mb-2" style="font-size:0.78rem;">Café y licor de hierbas</p>
+                                    <div class="d-flex flex-wrap gap-1">
+                                        <span class="badge tag-mood-amber">Café</span>
+                                        <span class="badge tag-mood-amber">Herbal</span>
+                                        <span class="badge tag-mood-amber">Intenso</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+ 
+                        <!-- Vainilla -->
+                        <div class="flavor-card">
+                            <div class="product-card">
+                                <span class="product-card-accent" style="background:#4299e1;"></span>
+                                <div class="position-relative product-img mood-blue">
+                                    <div class="boba-circle bc-blue"></div>
+                                    <div class="product-badge" style="background:#4299e1;">PREMIUM</div>
+                                </div>
+                                <div class="p-3">
+                                    <h3 class="h5 fw-bold mb-1">Vainilla</h3>
+                                    <p class="text-muted small mb-2" style="font-size:0.78rem;">Full vainilla</p>
+                                    <div class="d-flex flex-wrap gap-1">
+                                        <span class="badge tag-mood-blue">Vainilla</span>
+                                        <span class="badge tag-mood-blue">Cremoso</span>
+                                        <span class="badge tag-mood-blue">Clásico</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+ 
+                        <!-- Full Taro -->
+                        <div class="flavor-card">
+                            <div class="product-card">
+                                <span class="product-card-accent" style="background:#805ad5;"></span>
+                                <div class="position-relative product-img mood-purple">
+                                    <div class="boba-circle bc-purple"></div>
+                                    <div class="product-badge" style="background:#805ad5;">EXCLUSIVO</div>
+                                </div>
+                                <div class="p-3">
+                                    <h3 class="h5 fw-bold mb-1">Full Taro</h3>
+                                    <p class="text-muted small mb-2" style="font-size:0.78rem;">Full taro</p>
+                                    <div class="d-flex flex-wrap gap-1">
+                                        <span class="badge tag-mood-purple">Taro</span>
+                                        <span class="badge tag-mood-purple">Aromático</span>
+                                        <span class="badge tag-mood-purple">Equilibrado</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+ 
+                    </div>
+                </div>
+                <p class="text-center text-muted mt-3 d-block d-lg-none" style="font-size:0.85rem;">
+                    <i class="bi bi-arrow-left-right me-1"></i> Desliza para ver más sabores
+                </p>
+            </div>
+ 
+            <!-- ========== BUBBLE TEA ========== -->
+            <div class="flavor-panel" id="panel-bubbletea">
+                <p class="text-center text-muted mb-4">Bebida de té con perlitas de tapioca. Elige tu sabor favorito.</p>
+                <div class="row g-3 justify-content-center">
+                    <div class="col-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="bt-pill">
+                            <div class="bt-pill-circle" style="background: radial-gradient(circle at 35% 35%, #fde68a, #d69e2e);"></div>
+                            <span>Durazno</span>
+                        </div>
+                    </div>
+                    <div class="col-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="bt-pill">
+                            <div class="bt-pill-circle" style="background: radial-gradient(circle at 35% 35%, #f4b8d1, #e93586);"></div>
+                            <span>Frambuesa</span>
+                        </div>
+                    </div>
+                    <div class="col-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="bt-pill">
+                            <div class="bt-pill-circle" style="background: radial-gradient(circle at 35% 35%, #f4b8d1, #e93586);"></div>
+                            <span>Fresa</span>
+                        </div>
+                    </div>
+                    <div class="col-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="bt-pill">
+                            <div class="bt-pill-circle" style="background: radial-gradient(circle at 35% 35%, #fde68a, #d69e2e);"></div>
+                            <span>Fruta de la pasión</span>
+                        </div>
+                    </div>
+                    <div class="col-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="bt-pill">
+                            <div class="bt-pill-circle" style="background: radial-gradient(circle at 35% 35%, #a7f3d0, #38a169);"></div>
+                            <span>Kiwi</span>
+                        </div>
+                    </div>
+                    <div class="col-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="bt-pill">
+                            <div class="bt-pill-circle" style="background: radial-gradient(circle at 35% 35%, #fde68a, #d69e2e);"></div>
+                            <span>Mango</span>
+                        </div>
+                    </div>
+                    <div class="col-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="bt-pill">
+                            <div class="bt-pill-circle" style="background: radial-gradient(circle at 35% 35%, #fde68a, #d69e2e);"></div>
+                            <span>Maracuyá</span>
+                        </div>
+                    </div>
+                    <div class="col-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="bt-pill">
+                            <div class="bt-pill-circle" style="background: radial-gradient(circle at 35% 35%, #93c5fd, #4299e1);"></div>
+                            <span>Mora azul</span>
+                        </div>
+                    </div>
+                    <div class="col-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="bt-pill">
+                            <div class="bt-pill-circle" style="background: radial-gradient(circle at 35% 35%, #fde68a, #d69e2e);"></div>
+                            <span>Té chai</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center mt-4 p-3 rounded-3" style="background: rgba(3,194,211,0.08); border: 0.5px solid rgba(3,194,211,0.2);">
+                    <p class="mb-0 text-muted small"><i class="bi bi-info-circle me-2"></i>Todos los bubble tea incluyen perlitas de tapioca. Pregunta por combinaciones especiales.</p>
+                </div>
+            </div>
+ 
         </div>
     </section>
 
-
-    <!-- ===================== HELADOS ===================== -->
+        <!-- ===================== HELADOS ===================== -->
     <section id="helados" class="section-padding" style="background: var(--white);">
         <div class="container">
             <h2 class="section-title center pink-line mb-4">HELADOS</h2>
             <p class="text-center text-muted mb-5 fs-5">
-                Nieve artesanal con los sabores más creativos, perfecta para combinar con tu bubble tea.
+                Nieve artesanal preparada con ingredientes de primera. Perfecta sola o combinada con tu bubble tea favorito.
             </p>
-
+ 
             <div class="flavors-scroll-wrapper">
                 <button class="scroll-arrow left" onclick="scrollCarousel('heladosScroll', -1)" aria-label="Anterior">
                     <i class="bi bi-chevron-left"></i>
@@ -1117,128 +1949,126 @@
                 <button class="scroll-arrow right" onclick="scrollCarousel('heladosScroll', 1)" aria-label="Siguiente">
                     <i class="bi bi-chevron-right"></i>
                 </button>
-
+ 
                 <div class="flavors-scroll" id="heladosScroll">
-
-                    <!-- Fresa con Crema — pink -->
-                    <div class="flavor-card">
-                        <div class="product-card">
-                            <span class="product-card-accent" style="background:#e93586;"></span>
-                            <div class="position-relative product-img mood-pink" style="background-image:url(images/nieve.png); background-size:cover; background-position:center;">
-                                <div class="product-badge" style="background:var(--hotpink);">FAVORITO</div>
-                            </div>
-                            <div class="p-3">
-                                <h3 class="h5 fw-bold mb-2">Fresa con Crema</h3>
-                                <p class="text-muted small mb-3">Clásico frutal con textura cremosa irresistible.</p>
-                                <div class="d-flex flex-wrap gap-1">
-                                    <span class="badge tag-mood-pink">Frutal</span>
-                                    <span class="badge tag-mood-pink">Cremoso</span>
-                                    <span class="badge tag-mood-pink">Clásico</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Taro Helado — purple -->
-                    <div class="flavor-card">
-                        <div class="product-card">
-                            <span class="product-card-accent" style="background:#805ad5;"></span>
-                            <div class="position-relative product-img mood-purple" style="background-image:url(images/nieve.png); background-size:cover; background-position:center;">
-                                <div class="product-badge" style="background:#805ad5;">EXCLUSIVO</div>
-                            </div>
-                            <div class="p-3">
-                                <h3 class="h5 fw-bold mb-2">Taro Helado</h3>
-                                <p class="text-muted small mb-3">Aromático, suave y verdaderamente único.</p>
-                                <div class="d-flex flex-wrap gap-1">
-                                    <span class="badge tag-mood-purple">Aromático</span>
-                                    <span class="badge tag-mood-purple">Suave</span>
-                                    <span class="badge tag-mood-purple">Único</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Mango Tajín — amber -->
+ 
+                    <!-- Nuez -->
                     <div class="flavor-card">
                         <div class="product-card">
                             <span class="product-card-accent" style="background:#d69e2e;"></span>
                             <div class="position-relative product-img mood-amber" style="background-image:url(images/nieve.png); background-size:cover; background-position:center;">
-                                <div class="product-badge" style="background:#d69e2e;">LIMITADO</div>
+                                <div class="product-badge" style="background:#d69e2e;">CLÁSICO</div>
                             </div>
                             <div class="p-3">
-                                <h3 class="h5 fw-bold mb-2">Mango Tajín</h3>
-                                <p class="text-muted small mb-3">Tropical e intenso con un toque picante.</p>
+                                <h3 class="h5 fw-bold mb-2">Nuez</h3>
+                                <p class="text-muted small mb-3">Intenso sabor tostado con un toque dulce y terroso. Un clásico irresistible para los amantes de los frutos secos.</p>
                                 <div class="d-flex flex-wrap gap-1">
-                                    <span class="badge tag-mood-amber">Picante</span>
-                                    <span class="badge tag-mood-amber">Tropical</span>
+                                    <span class="badge tag-mood-amber">Tostado</span>
                                     <span class="badge tag-mood-amber">Intenso</span>
+                                    <span class="badge tag-mood-amber">Cremoso</span>
                                 </div>
                             </div>
                         </div>
                     </div>
-
-                    <!-- Matcha Dream — green -->
+ 
+                    <!-- Pistache Dubai -->
                     <div class="flavor-card">
                         <div class="product-card">
                             <span class="product-card-accent" style="background:#38a169;"></span>
                             <div class="position-relative product-img mood-green" style="background-image:url(images/nieve.png); background-size:cover; background-position:center;">
-                                <div class="product-badge" style="background:#38a169;">NUEVO</div>
+                                <div class="product-badge" style="background:#38a169;">TENDENCIA</div>
                             </div>
                             <div class="p-3">
-                                <h3 class="h5 fw-bold mb-2">Matcha Dream</h3>
-                                <p class="text-muted small mb-3">Herbal, suave y con esencia japonesa.</p>
+                                <h3 class="h5 fw-bold mb-2">Pistache Dubai</h3>
+                                <p class="text-muted small mb-3">Inspirado en el chocolate viral de Dubai. Pistache fino con notas dulces y una textura única que no olvidarás.</p>
                                 <div class="d-flex flex-wrap gap-1">
-                                    <span class="badge tag-mood-green">Herbal</span>
-                                    <span class="badge tag-mood-green">Suave</span>
-                                    <span class="badge tag-mood-green">Japonés</span>
+                                    <span class="badge tag-mood-green">Pistache</span>
+                                    <span class="badge tag-mood-green">Viral</span>
+                                    <span class="badge tag-mood-green">Único</span>
                                 </div>
                             </div>
                         </div>
                     </div>
-
-                    <!-- Vainilla Oreo — teal -->
+ 
+                    <!-- Queso Mascarpone con Frutos Rojos -->
                     <div class="flavor-card">
                         <div class="product-card">
-                            <span class="product-card-accent" style="background:#03c2d3;"></span>
-                            <div class="position-relative product-img mood-teal" style="background-image:url(images/nieve.png); background-size:cover; background-position:center;">
-                                <div class="product-badge" style="background:#03c2d3;">ESPECIAL</div>
+                            <span class="product-card-accent" style="background:#e93586;"></span>
+                            <div class="position-relative product-img mood-pink" style="background-image:url(images/nieve.png); background-size:cover; background-position:center;">
+                                <div class="product-badge" style="background:#e93586;">GOURMET</div>
                             </div>
                             <div class="p-3">
-                                <h3 class="h5 fw-bold mb-2">Vainilla Oreo</h3>
-                                <p class="text-muted small mb-3">Dulce, cremoso y con trozos crujientes.</p>
+                                <h3 class="h5 fw-bold mb-2">Mascarpone y Frutos Rojos</h3>
+                                <p class="text-muted small mb-3">La suavidad del queso mascarpone se funde con la acidez de los frutos rojos. Sofisticado, cremoso y sorprendente.</p>
                                 <div class="d-flex flex-wrap gap-1">
-                                    <span class="badge tag-mood-teal">Dulce</span>
-                                    <span class="badge tag-mood-teal">Cremoso</span>
-                                    <span class="badge tag-mood-teal">Crujiente</span>
+                                    <span class="badge tag-mood-pink">Gourmet</span>
+                                    <span class="badge tag-mood-pink">Berries</span>
+                                    <span class="badge tag-mood-pink">Sofisticado</span>
                                 </div>
                             </div>
                         </div>
                     </div>
-
-                    <!-- Chocolate Belga — blue -->
+ 
+                    <!-- Cajeta -->
+                    <div class="flavor-card">
+                        <div class="product-card">
+                            <span class="product-card-accent" style="background:#d69e2e;"></span>
+                            <div class="position-relative product-img mood-amber" style="background-image:url(images/nieve.png); background-size:cover; background-position:center;">
+                                <div class="product-badge" style="background:#d69e2e;">FAVORITO</div>
+                            </div>
+                            <div class="p-3">
+                                <h3 class="h5 fw-bold mb-2">Cajeta</h3>
+                                <p class="text-muted small mb-3">El sabor más mexicano de todos. Dulce de leche artesanal convertido en una nieve cremosa y profundamente reconfortante.</p>
+                                <div class="d-flex flex-wrap gap-1">
+                                    <span class="badge tag-mood-amber">Caramelo</span>
+                                    <span class="badge tag-mood-amber">Dulce</span>
+                                    <span class="badge tag-mood-amber">Mexicano</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+ 
+                    <!-- Chocolate -->
+                    <div class="flavor-card">
+                        <div class="product-card">
+                            <span class="product-card-accent" style="background:#805ad5;"></span>
+                            <div class="position-relative product-img mood-purple" style="background-image:url(images/nieve.png); background-size:cover; background-position:center;">
+                                <div class="product-badge" style="background:#805ad5;">BEST SELLER</div>
+                            </div>
+                            <div class="p-3">
+                                <h3 class="h5 fw-bold mb-2">Chocolate</h3>
+                                <p class="text-muted small mb-3">Rico, intenso y sin pretextos. Un chocolate puro que satisface hasta el antojo más exigente con cada cucharada.</p>
+                                <div class="d-flex flex-wrap gap-1">
+                                    <span class="badge tag-mood-purple">Intenso</span>
+                                    <span class="badge tag-mood-purple">Rico</span>
+                                    <span class="badge tag-mood-purple">Puro</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+ 
+                    <!-- Oreo -->
                     <div class="flavor-card">
                         <div class="product-card">
                             <span class="product-card-accent" style="background:#4299e1;"></span>
                             <div class="position-relative product-img mood-blue" style="background-image:url(images/nieve.png); background-size:cover; background-position:center;">
-                                <div class="product-badge" style="background:#4299e1;">BEST SELLER</div>
+                                <div class="product-badge" style="background:#4299e1;">ESPECIAL</div>
                             </div>
                             <div class="p-3">
-                                <h3 class="h5 fw-bold mb-2">Chocolate Belga</h3>
-                                <p class="text-muted small mb-3">Intenso, rico y de calidad premium.</p>
+                                <h3 class="h5 fw-bold mb-2">Oreo</h3>
+                                <p class="text-muted small mb-3">Vainilla cremosa con trozos de galleta Oreo en cada bocado. Crujiente por fuera, suave por dentro — adictivo desde el primer sorbo.</p>
                                 <div class="d-flex flex-wrap gap-1">
-                                    <span class="badge tag-mood-blue">Intenso</span>
-                                    <span class="badge tag-mood-blue">Rico</span>
-                                    <span class="badge tag-mood-blue">Premium</span>
+                                    <span class="badge tag-mood-blue">Galleta</span>
+                                    <span class="badge tag-mood-blue">Crujiente</span>
+                                    <span class="badge tag-mood-blue">Dulce</span>
                                 </div>
                             </div>
                         </div>
                     </div>
-
-                    <!-- ADD MORE ICE CREAM FLAVOR CARDS HERE -->
-
+ 
                 </div>
             </div>
-
+ 
             <p class="text-center text-muted mt-3 d-block d-lg-none" style="font-size:0.85rem;">
                 <i class="bi bi-arrow-left-right me-1"></i> Desliza para ver más sabores
             </p>
@@ -1502,7 +2332,7 @@
 
             <div class="sbar-actions">
 
-                <a href="https://g.page/r/REPLACE_WITH_YOUR_GOOGLE_REVIEW_LINK/review"
+                <a href="https://share.google/94LY0Y3XURD5NMZtT"
                    target="_blank" rel="noopener"
                    class="sbar-btn sbar-btn-google">
                     <svg width="15" height="15" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="flex-shrink:0;">
@@ -1584,6 +2414,15 @@
             const container = document.getElementById(id);
             container.scrollBy({ left: direction * (220 + 20) * 2, behavior: 'smooth' });
         }
+
+            document.querySelectorAll('.flavor-tab').forEach(tab => {
+        tab.addEventListener('click', function() {
+            document.querySelectorAll('.flavor-tab').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.flavor-panel').forEach(p => p.classList.remove('active'));
+            this.classList.add('active');
+            document.getElementById('panel-' + this.dataset.tab).classList.add('active');
+        });
+    });
     </script>
 </body>
 </html>
