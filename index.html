@@ -907,15 +907,7 @@
     .flavor-tabs-wrapper {
         display: flex;
         justify-content: center;
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-        scrollbar-width: none;
-        padding: 0 4px 4px;
-        margin-bottom: 0;
     }
-
-    .flavor-tabs-wrapper::-webkit-scrollbar { display: none; }
-
     .flavor-tabs {
         display: inline-flex;
         background: #ffffff;
@@ -924,13 +916,11 @@
         padding: 5px;
         gap: 4px;
         box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-        flex-shrink: 0;
     }
-
     .flavor-tab {
         background: none;
         border: none;
-        padding: 10px 18px;
+        padding: 10px 24px;
         border-radius: 8px;
         font-weight: 650;
         font-size: 0.88rem;
@@ -940,17 +930,13 @@
         display: flex;
         align-items: center;
         gap: 4px;
-        white-space: nowrap;
     }
-
     .flavor-tab:hover { color: var(--primary-blue); background: #f7fafc; }
-
     .flavor-tab.active {
         background: var(--primary-blue);
         color: #ffffff;
         box-shadow: 0 4px 12px rgba(26,54,93,0.2);
     }
-
     .tab-count {
         background: rgba(255,255,255,0.2);
         border-radius: 20px;
@@ -959,20 +945,9 @@
         font-weight: 700;
         margin-left: 2px;
     }
-
     .flavor-tab:not(.active) .tab-count {
         background: rgba(26,54,93,0.1);
         color: var(--primary-blue);
-    }
-
-    @media (max-width: 480px) {
-        .flavor-tab {
-            padding: 9px 14px;
-            font-size: 0.8rem;
-        }
-        .flavor-tab i {
-            display: none;
-        }
     }
     .flavor-panel { display: none; }
     .flavor-panel.active { display: block; }
@@ -1045,7 +1020,7 @@
                 <div class="col-lg-6"></div>
             </div>
         </div>
-    </section>
+    </section> 
 
 
         <!-- ===================== SABORES (3 categorías con tabs) ===================== -->
@@ -1091,7 +1066,7 @@
                             <div class="product-card">
                                 <span class="product-card-accent" style="background:#e93586;"></span>
                                 <div class="position-relative product-img mood-pink">
-                                    <img src="images/chocoboom3.png" alt="Choco Boom" class="img-fluid">
+                                    <img src="images/chocoboom3.png" loading="lazy" alt="Choco Boom" class="img-fluid">
                                     <div class="product-badge" style="background:#e93586;">BEST SELLER</div>
                                 </div>
                                 <div class="p-3">
@@ -1111,7 +1086,7 @@
                             <div class="product-card">
                                 <span class="product-card-accent" style="background:#d69e2e;"></span>
                                 <div class="position-relative product-img mood-amber">
-                                    <img src="images/cookiebomba.png" alt="Cookie Bomba" class="img-fluid">
+                                    <img src="images/cookiebomba.png" loading="lazy" alt="Cookie Bomba" class="img-fluid">
                                     <div class="product-badge" style="background:#d69e2e;">FAVORITO</div>
                                 </div>
                                 <div class="p-3">
@@ -1131,7 +1106,7 @@
                             <div class="product-card">
                                 <span class="product-card-accent" style="background:#d69e2e;"></span>
                                 <div class="position-relative product-img mood-amber">
-                                    <img src="images/caramelito.png" alt="Caramel-Ito" class="img-fluid">
+                                    <img src="images/caramelito.png" loading="lazy" alt="Caramel-Ito" class="img-fluid">
                                     <div class="product-badge" style="background:#d69e2e;">ESPECIAL</div>
                                 </div>
                                 <div class="p-3">
@@ -1151,7 +1126,7 @@
                             <div class="product-card">
                                 <span class="product-card-accent" style="background:#e93586;"></span>
                                 <div class="position-relative product-img mood-pink">
-                                    <img src="images/chocopink.png" alt="Choco Pink" class="img-fluid">
+                                    <img src="images/chocopink.png" loading="lazy" alt="Choco Pink" class="img-fluid">
                                     <div class="product-badge" style="background:#e93586;">NUEVO</div>
                                 </div>
                                 <div class="p-3">
@@ -1171,7 +1146,7 @@
                             <div class="product-card">
                                 <span class="product-card-accent" style="background:#4299e1;"></span>
                                 <div class="position-relative product-img mood-blue">
-                                    <img src="images/monkey.png" alt="Monkey" class="img-fluid">
+                                    <img src="images/monkey.png" loading="lazy" alt="Monkey" class="img-fluid">
                                     <div class="product-badge" style="background:#4299e1;">NUEVO</div>
                                 </div>
                                 <div class="p-3">
@@ -1191,7 +1166,7 @@
                             <div class="product-card">
                                 <span class="product-card-accent" style="background:#e93586;"></span>
                                 <div class="position-relative product-img mood-pink">
-                                    <img src="images/rainbowrain.png" alt="Rainbow Rain" class="img-fluid">
+                                    <img src="images/rainbowrain.png" loading="lazy" alt="Rainbow Rain" class="img-fluid">
                                     <div class="product-badge" style="background:#e93586;">POPULAR</div>
                                 </div>
                                 <div class="p-3">
@@ -1211,7 +1186,7 @@
                             <div class="product-card">
                                 <span class="product-card-accent" style="background:#805ad5;"></span>
                                 <div class="position-relative product-img mood-purple">
-                                    <img src="images/tentacion.png" alt="Tentación" class="img-fluid">
+                                    <img src="images/tentacion.png" loading="lazy" alt="Tentación" class="img-fluid">
                                     <div class="product-badge" style="background:#805ad5;">ESPECIAL</div>
                                 </div>
                                 <div class="p-3">
@@ -1231,7 +1206,7 @@
                             <div class="product-card">
                                 <span class="product-card-accent" style="background:#38a169;"></span>
                                 <div class="position-relative product-img mood-green">
-                                    <img src="images/lemongreen.png" alt="Lemon Green" class="img-fluid">
+                                    <img src="images/lemongreen.png" loading="lazy" alt="Lemon Green" class="img-fluid">
                                     <div class="product-badge" style="background:#38a169;">FRESCO</div>
                                 </div>
                                 <div class="p-3">
@@ -1251,7 +1226,7 @@
                             <div class="product-card">
                                 <span class="product-card-accent" style="background:#e93586;"></span>
                                 <div class="position-relative product-img mood-pink">
-                                    <img src="images/pinkpanter.png" alt="Pink Panter" class="img-fluid">
+                                    <img src="images/pinkpanter.png" loading="lazy" alt="Pink Panter" class="img-fluid">
                                     <div class="product-badge" style="background:#e93586;">FAVORITO</div>
                                 </div>
                                 <div class="p-3">
@@ -1271,7 +1246,7 @@
                             <div class="product-card">
                                 <span class="product-card-accent" style="background:#d69e2e;"></span>
                                 <div class="position-relative product-img mood-amber">
-                                    <img src="images/passionlove.png" alt="Passion Love" class="img-fluid">
+                                    <img src="images/passionlove.png" loading="lazy" alt="Passion Love" class="img-fluid">
                                     <div class="product-badge" style="background:#d69e2e;">NUEVO</div>
                                 </div>
                                 <div class="p-3">
@@ -1291,7 +1266,7 @@
                             <div class="product-card">
                                 <span class="product-card-accent" style="background:#03c2d3;"></span>
                                 <div class="position-relative product-img mood-teal">
-                                    <img src="images/besoplayero.png" alt="Beso Playero" class="img-fluid">
+                                    <img src="images/besoplayero.png" loading="lazy" alt="Beso Playero" class="img-fluid">
                                     <div class="product-badge" style="background:#03c2d3;">VERANO</div>
                                 </div>
                                 <div class="p-3">
@@ -1311,7 +1286,7 @@
                             <div class="product-card">
                                 <span class="product-card-accent" style="background:#38a169;"></span>
                                 <div class="position-relative product-img mood-green">
-                                    <img src="images/citrusboom.png" alt="Citrus Boom" class="img-fluid">
+                                    <img src="images/citrusboom.png" loading="lazy" alt="Citrus Boom" class="img-fluid">
                                     <div class="product-badge" style="background:#38a169;">INTENSO</div>
                                 </div>
                                 <div class="p-3">
@@ -1331,7 +1306,7 @@
                             <div class="product-card">
                                 <span class="product-card-accent" style="background:#e93586;"></span>
                                 <div class="position-relative product-img mood-pink">
-                                    <img src="images/sexynila.png" alt="Sexy Nila" class="img-fluid">
+                                    <img src="images/sexynila.png" loading="lazy" alt="Sexy Nila" class="img-fluid">
                                     <div class="product-badge" style="background:#e93586;">CLÁSICO</div>
                                 </div>
                                 <div class="p-3">
@@ -1351,7 +1326,7 @@
                             <div class="product-card">
                                 <span class="product-card-accent" style="background:#38a169;"></span>
                                 <div class="position-relative product-img mood-green">
-                                    <img src="images/bedelicious.png" alt="Be Delicious" class="img-fluid">
+                                    <img src="images/bedelicious.png" loading="lazy" alt="Be Delicious" class="img-fluid">
                                     <div class="product-badge" style="background:#38a169;">FRESCO</div>
                                 </div>
                                 <div class="p-3">
@@ -1371,7 +1346,7 @@
                             <div class="product-card">
                                 <span class="product-card-accent" style="background:#d69e2e;"></span>
                                 <div class="position-relative product-img mood-amber">
-                                    <img src="images/techai.png" alt="Té Chai" class="img-fluid">
+                                    <img src="images/techai.png" loading="lazy" alt="Té Chai" class="img-fluid">
                                     <div class="product-badge" style="background:#d69e2e;">ESPECIAL</div>
                                 </div>
                                 <div class="p-3">
@@ -1391,7 +1366,7 @@
                             <div class="product-card">
                                 <span class="product-card-accent" style="background:#4299e1;"></span>
                                 <div class="position-relative product-img mood-blue">
-                                    <img src="images/chocoroco.png" alt="Chocoroco" class="img-fluid">
+                                    <img src="images/chocoroco.png" loading="lazy" alt="Chocoroco" class="img-fluid">
                                     <div class="product-badge" style="background:#4299e1;">TROPICAL</div>
                                 </div>
                                 <div class="p-3">
@@ -1411,7 +1386,7 @@
                             <div class="product-card">
                                 <span class="product-card-accent" style="background:#d69e2e;"></span>
                                 <div class="position-relative product-img mood-amber">
-                                    <img src="images/yellowhappy.png" alt="Yellow Happy" class="img-fluid">
+                                    <img src="images/yellowhappy.png" loading="lazy" alt="Yellow Happy" class="img-fluid">
                                     <div class="product-badge" style="background:#d69e2e;">NUEVO</div>
                                 </div>
                                 <div class="p-3">
