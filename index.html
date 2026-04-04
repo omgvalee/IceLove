@@ -916,6 +916,7 @@
         padding: 5px;
         gap: 4px;
         box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        max-width: 100%;
     }
     .flavor-tab {
         background: none;
@@ -930,6 +931,20 @@
         display: flex;
         align-items: center;
         gap: 4px;
+        white-space: nowrap;
+    }
+    @media (max-width: 575px) {
+        .flavor-tabs-wrapper { padding: 0 4px; }
+        .flavor-tabs { display: flex; width: 100%; }
+        .flavor-tab {
+            flex: 1;
+            justify-content: center;
+            padding: 9px 6px;
+            font-size: 0.78rem;
+            gap: 3px;
+        }
+        .flavor-tab .bi { display: none; }
+        .tab-count { display: none; }
     }
     .flavor-tab:hover { color: var(--primary-blue); background: #f7fafc; }
     .flavor-tab.active {
@@ -1909,7 +1924,7 @@
                     </div>
                     <div class="col-6 col-sm-4 col-md-3 col-lg-2">
                         <div class="bt-pill">
-                            <div class="bt-pill-circle" style="display:flex;align-items:center;justify-content:center;font-size:2rem;">☀️</div>
+                            <div class="bt-pill-circle" style="display:flex;align-items:center;justify-content:center;font-size:2rem;">🌺</div>
                             <span>Maracuyá</span>
                         </div>
                     </div>
@@ -1956,7 +1971,7 @@
                     <div class="flavor-card">
                         <div class="product-card">
                             <span class="product-card-accent" style="background:#d69e2e;"></span>
-                            <div class="position-relative product-img mood-amber" style="background-image:url(images/nieve.png); background-size:cover; background-position:center;">
+                            <div class="position-relative product-img mood-amber" style="background-image:url(images/nievenuez.png); background-size:cover; background-position:center;">
                                 <div class="product-badge" style="background:#d69e2e;">CLÁSICO</div>
                             </div>
                             <div class="p-3">
@@ -1975,7 +1990,7 @@
                     <div class="flavor-card">
                         <div class="product-card">
                             <span class="product-card-accent" style="background:#38a169;"></span>
-                            <div class="position-relative product-img mood-green" style="background-image:url(images/nieve.png); background-size:cover; background-position:center;">
+                            <div class="position-relative product-img mood-green" style="background-image:url(images/nievedubai.png); background-size:cover; background-position:center;">
                                 <div class="product-badge" style="background:#38a169;">TENDENCIA</div>
                             </div>
                             <div class="p-3">
@@ -1994,7 +2009,7 @@
                     <div class="flavor-card">
                         <div class="product-card">
                             <span class="product-card-accent" style="background:#e93586;"></span>
-                            <div class="position-relative product-img mood-pink" style="background-image:url(images/nieve.png); background-size:cover; background-position:center;">
+                            <div class="position-relative product-img mood-pink" style="background-image:url(images/nievefrutosrojos.png); background-size:cover; background-position:center;">
                                 <div class="product-badge" style="background:#e93586;">GOURMET</div>
                             </div>
                             <div class="p-3">
@@ -2013,7 +2028,7 @@
                     <div class="flavor-card">
                         <div class="product-card">
                             <span class="product-card-accent" style="background:#d69e2e;"></span>
-                            <div class="position-relative product-img mood-amber" style="background-image:url(images/nieve.png); background-size:cover; background-position:center;">
+                            <div class="position-relative product-img mood-amber" style="background-image:url(images/nievecajeta.png); background-size:cover; background-position:center;">
                                 <div class="product-badge" style="background:#d69e2e;">FAVORITO</div>
                             </div>
                             <div class="p-3">
@@ -2032,7 +2047,7 @@
                     <div class="flavor-card">
                         <div class="product-card">
                             <span class="product-card-accent" style="background:#805ad5;"></span>
-                            <div class="position-relative product-img mood-purple" style="background-image:url(images/nieve.png); background-size:cover; background-position:center;">
+                            <div class="position-relative product-img mood-purple" style="background-image:url(images/nievechocolate.png); background-size:cover; background-position:center;">
                                 <div class="product-badge" style="background:#805ad5;">BEST SELLER</div>
                             </div>
                             <div class="p-3">
@@ -2051,7 +2066,7 @@
                     <div class="flavor-card">
                         <div class="product-card">
                             <span class="product-card-accent" style="background:#4299e1;"></span>
-                            <div class="position-relative product-img mood-blue" style="background-image:url(images/nieve.png); background-size:cover; background-position:center;">
+                            <div class="position-relative product-img mood-blue" style="background-image:url(images/nieveoreo.png); background-size:cover; background-position:center;">
                                 <div class="product-badge" style="background:#4299e1;">ESPECIAL</div>
                             </div>
                             <div class="p-3">
@@ -2098,7 +2113,7 @@
 
                 <div class="col-lg-4 col-md-6">
                     <div class="snack-card">
-                        <div class="snack-img snack-img-waff"></div>
+                        <img src="images/waffle.png" alt="Waffles" class="snack-img snack-img-waffle">
                         <div class="p-4">
                             <div class="snack-icon"><i class="bi bi-grid-fill"></i></div>
                             <h4 class="fw-bold mb-2">Waffles</h4>
@@ -2109,7 +2124,7 @@
 
                 <div class="col-lg-4 col-md-6">
                     <div class="snack-card">
-                        <div class="snack-img snack-img-jelly"></div>
+                        <img src="images/jellys.png" alt="Jellys" class="snack-img snack-img-jellys">
                         <div class="p-4">
                             <div class="snack-icon"><i class="bi bi-stars"></i></div>
                             <h4 class="fw-bold mb-2">Jellys</h4>
